@@ -1,11 +1,11 @@
 #include <QApplication>
 #include <QPushButton>
-#include "view/MainWidget.h"
+#include "view/ElisMainWidget.h"
 
 int main(int argc, char *argv[]) {
     QApplication a(argc, argv);
 
-    MainWidget mw;
+    ElisMainWidget mw;
     mw.show();
     return QApplication::exec();
 }
