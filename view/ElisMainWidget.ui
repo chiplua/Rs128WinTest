@@ -24,7 +24,7 @@
    </property>
    <layout class="QHBoxLayout" name="hLayoutCom">
     <item>
-     <widget class="QComboBox" name="comboBox"/>
+     <widget class="QComboBox" name="cbComList"/>
     </item>
     <item>
      <widget class="QPushButton" name="btnOpenCom">
@@ -310,7 +310,7 @@ p, li { white-space: pre-wrap; }
      <number>0</number>
     </property>
     <item>
-     <widget class="QComboBox" name="comboBox_2"/>
+     <widget class="QComboBox" name="cbExitMode"/>
     </item>
     <item>
      <widget class="QPushButton" name="btnGateModeSetting">
@@ -338,7 +338,7 @@ p, li { white-space: pre-wrap; }
      <number>25</number>
     </property>
     <item>
-     <widget class="QComboBox" name="comboBox_3"/>
+     <widget class="QComboBox" name="cbTestModule"/>
     </item>
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout">
@@ -378,7 +378,7 @@ p, li { white-space: pre-wrap; }
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>230</y>
+     <y>240</y>
      <width>651</width>
      <height>91</height>
     </rect>
@@ -391,6 +391,9 @@ p, li { white-space: pre-wrap; }
       </property>
      </widget>
     </item>
+    <item row="0" column="3">
+     <widget class="QComboBox" name="cbTopIndicatorLight"/>
+    </item>
     <item row="0" column="1">
      <widget class="QTextEdit" name="tvLightDuration">
       <property name="html">
@@ -399,6 +402,13 @@ p, li { white-space: pre-wrap; }
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'.AppleSystemUIFont'; font-size:13pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;1&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="3">
+     <widget class="QPushButton" name="btnTopIndicatorLight">
+      <property name="text">
+       <string>Top Indicator Light</string>
       </property>
      </widget>
     </item>
@@ -431,16 +441,6 @@ p, li { white-space: pre-wrap; }
      <widget class="QRadioButton" name="radioButton_3">
       <property name="text">
        <string>Entry Dir.</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="3">
-     <widget class="QComboBox" name="comboBox_4"/>
-    </item>
-    <item row="1" column="3">
-     <widget class="QPushButton" name="btnTopIndicatorLight">
-      <property name="text">
-       <string>Top Indicator Light</string>
       </property>
      </widget>
     </item>
@@ -554,7 +554,7 @@ p, li { white-space: pre-wrap; }
    <property name="geometry">
     <rect>
      <x>670</x>
-     <y>230</y>
+     <y>240</y>
      <width>167</width>
      <height>91</height>
     </rect>
@@ -620,9 +620,9 @@ p, li { white-space: pre-wrap; }
    <property name="geometry">
     <rect>
      <x>850</x>
-     <y>230</y>
+     <y>241</y>
      <width>160</width>
-     <height>202</height>
+     <height>191</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout_8">

@@ -34,6 +34,11 @@ ElisMainWidget::ElisMainWidget(QWidget *parent) :
     ui->tvPassengerAuthorizationTimeout->setStyleSheet("background:white");
     ui->tvSensorTimeout->setStyleSheet("background:white");
     ui->tvStressTestIntervalTime->setStyleSheet("background:white");
+    ui->cbComList->setStyleSheet("background:white");
+    ui->cbExitMode->setStyleSheet("background:white");
+    ui->cbTopIndicatorLight->setStyleSheet("background:white");
+    ui->cbTestModule->setStyleSheet("background:white");
+
 }
 
 ElisMainWidget::~ElisMainWidget() {
