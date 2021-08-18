@@ -13,6 +13,14 @@ ElisMainWidget::ElisMainWidget(QWidget *parent) :
     ui->setupUi(this);
     ui->horizontalLayoutWidget->setStyleSheet("background:rgb(211, 211, 211)");
     ui->horizontalLayoutWidget_2->setStyleSheet("background:rgb(211, 211, 211)");
+    ui->verticalLayoutWidget_2->setStyleSheet("background:rgb(211, 211, 211)");
+    ui->verticalLayoutWidget_3->setStyleSheet("background:rgb(211, 211, 211)");
+    ui->verticalLayoutWidget_4->setStyleSheet("background:rgb(211, 211, 211)");
+    ui->verticalLayoutWidget_5->setStyleSheet("background:rgb(211, 211, 211)");
+    ui->verticalLayoutWidget_6->setStyleSheet("background:rgb(211, 211, 211)");
+    ui->verticalLayoutWidget_7->setStyleSheet("background:rgb(211, 211, 211)");
+    ui->gridLayoutWidget->setStyleSheet("background:rgb(211, 211, 211)");
+    ui->gridLayoutWidget_2->setStyleSheet("background:rgb(211, 211, 211)");
 }
 
 ElisMainWidget::~ElisMainWidget() {
