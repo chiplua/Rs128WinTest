@@ -195,7 +195,7 @@ Timeout(0~255Sec)</string>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_5">
+       <widget class="QPushButton" name="btnParameterSetting">
         <property name="text">
          <string>Parameter Setting</string>
         </property>
