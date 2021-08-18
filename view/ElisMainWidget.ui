@@ -27,28 +27,28 @@
      <widget class="QComboBox" name="comboBox"/>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="btnOpenCom">
       <property name="text">
        <string>Open</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton_2">
+     <widget class="QPushButton" name="btnCloseCom">
       <property name="text">
        <string>Close</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton_3">
+     <widget class="QPushButton" name="btnCurrentStatusRequest">
       <property name="text">
        <string>Current Status Request</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton_4">
+     <widget class="QPushButton" name="btnOk">
       <property name="text">
        <string>OK</string>
       </property>
@@ -282,9 +282,9 @@ p, li { white-space: pre-wrap; }
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton_7">
+     <widget class="QPushButton" name="btnAisleModeSetting">
       <property name="text">
-       <string>Alsle Mode Setting</string>
+       <string>Aisle Mode Setting</string>
       </property>
      </widget>
     </item>
@@ -313,7 +313,7 @@ p, li { white-space: pre-wrap; }
      <widget class="QComboBox" name="comboBox_2"/>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton_6">
+     <widget class="QPushButton" name="btnGateModeSetting">
       <property name="text">
        <string>Gate Mode Setting</string>
       </property>
@@ -366,7 +366,7 @@ p, li { white-space: pre-wrap; }
      </layout>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton_8">
+     <widget class="QPushButton" name="btnTestModule">
       <property name="text">
        <string>Test Module</string>
       </property>
@@ -440,9 +440,9 @@ p, li { white-space: pre-wrap; }
      <widget class="QComboBox" name="comboBox_4"/>
     </item>
     <item row="1" column="3">
-     <widget class="QPushButton" name="pushButton_11">
+     <widget class="QPushButton" name="btnTopIndicatorLight">
       <property name="text">
-       <string>Top Indicatior Light</string>
+       <string>Top Indicator Light</string>
       </property>
      </widget>
     </item>
@@ -477,7 +477,7 @@ p, li { white-space: pre-wrap; }
      </widget>
     </item>
     <item row="1" column="0">
-     <widget class="QPushButton" name="pushButton_10">
+     <widget class="QPushButton" name="btnStopStressTest">
       <property name="text">
        <string>Stop Stress Test</string>
       </property>
@@ -512,7 +512,7 @@ p, li { white-space: pre-wrap; }
      </widget>
     </item>
     <item row="0" column="0">
-     <widget class="QPushButton" name="pushButton_9">
+     <widget class="QPushButton" name="btnStartStressTest">
       <property name="text">
        <string>Start Stress Test</string>
       </property>
@@ -577,7 +577,7 @@ p, li { white-space: pre-wrap; }
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton_12">
+     <widget class="QPushButton" name="btnPassageAuthorization">
       <property name="text">
        <string>Passage Authorization</string>
       </property>
@@ -596,7 +596,7 @@ p, li { white-space: pre-wrap; }
    </property>
    <layout class="QVBoxLayout" name="verticalLayout_7">
     <item>
-     <widget class="QPushButton" name="pushButton_13">
+     <widget class="QPushButton" name="btnGedMode">
       <property name="text">
        <string>GED Mode</string>
       </property>
@@ -629,42 +629,42 @@ p, li { white-space: pre-wrap; }
    </property>
    <layout class="QVBoxLayout" name="verticalLayout_8">
     <item>
-     <widget class="QPushButton" name="pushButton_14">
+     <widget class="QPushButton" name="btnVersionRequest">
       <property name="text">
        <string>Version Request</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton_15">
+     <widget class="QPushButton" name="btnSetEmergency">
       <property name="text">
        <string>Set Emergency</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton_16">
+     <widget class="QPushButton" name="btnCancelEmergency">
       <property name="text">
        <string>Cancel Emergency</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton_17">
+     <widget class="QPushButton" name="btnClearPassageCount">
       <property name="text">
        <string>Clear Passage Count</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton_18">
+     <widget class="QPushButton" name="btnSensortest">
       <property name="text">
        <string>Sensor Test</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton_19">
+     <widget class="QPushButton" name="btnClearInfo">
       <property name="text">
        <string>Clear Info</string>
       </property>
