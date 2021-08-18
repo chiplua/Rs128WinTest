@@ -11,6 +11,8 @@
 ElisMainWidget::ElisMainWidget(QWidget *parent) :
         QWidget(parent), ui(new Ui::ElisMainWidget) {
     ui->setupUi(this);
+    ui->horizontalLayoutWidget->setStyleSheet("background:rgb(211, 211, 211)");
+    ui->horizontalLayoutWidget_2->setStyleSheet("background:rgb(211, 211, 211)");
 }
 
 ElisMainWidget::~ElisMainWidget() {
