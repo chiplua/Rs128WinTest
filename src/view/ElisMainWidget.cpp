@@ -86,7 +86,7 @@ void setVLayoutAisleMode(Ui::ElisMainWidget *ui) {
     ui->btnAisleModeSetting->setStyleSheet("background:gray");
     ui->btnAisleModeSetting->setFixedSize((ui->verticalLayoutWidget_6->width() - 40), 20);
     ui->btnAisleModeSetting->setPalette(getButtonCommonPalette());
-    ui->vLayoutAisleMode->setContentsMargins(20, 0, 20, 10);
+    ui->vLayoutAisleMode->setContentsMargins(20, 50, 20, 25);
 }
 
 void setVLayoutTestParam(Ui::ElisMainWidget *ui) {
