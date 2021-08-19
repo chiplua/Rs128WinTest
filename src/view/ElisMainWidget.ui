@@ -595,14 +595,7 @@ p, li { white-space: pre-wrap; }
      <height>91</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout_7">
-    <item>
-     <widget class="QPushButton" name="btnGedMode">
-      <property name="text">
-       <string>GED Mode</string>
-      </property>
-     </widget>
-    </item>
+   <layout class="QVBoxLayout" name="vLayoutNormalFlashGedMode">
     <item>
      <widget class="QRadioButton" name="radioButton_7">
       <property name="text">
@@ -614,6 +607,13 @@ p, li { white-space: pre-wrap; }
      <widget class="QRadioButton" name="radioButton_8">
       <property name="text">
        <string>Flash Mode</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="btnGedMode">
+      <property name="text">
+       <string>GED Mode</string>
       </property>
      </widget>
     </item>

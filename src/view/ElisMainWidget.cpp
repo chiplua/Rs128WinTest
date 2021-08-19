@@ -102,8 +102,8 @@ void setGLayoutLightSetting(Ui::ElisMainWidget *ui) {
 void setPassengerAuthorization(Ui::ElisMainWidget *ui) {
     ui->verticalLayoutWidget_5->setStyleSheet("background:rgb(211, 211, 211)");
     ui->btnPassageAuthorization->setStyleSheet("background:gray");
-    ui->btnPassageAuthorization->setFixedSize((ui->verticalLayoutWidget_5->width() - 40), 20);
-    ui->vLayoutPassengerAuthorization->setContentsMargins(25, 0, 25, 15);
+    ui->btnPassageAuthorization->setFixedSize((ui->verticalLayoutWidget_5->width() - 30), 20);
+    ui->vLayoutPassengerAuthorization->setContentsMargins(20, 0, 20, 15);
 }
 
 void setGLayoutStressTest(Ui::ElisMainWidget *ui) {
@@ -123,6 +123,17 @@ void setGLayoutStressTest(Ui::ElisMainWidget *ui) {
     ui->tvExitTotal->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 }
 
+void setNormalFlashGedMode(Ui::ElisMainWidget *ui) {
+    ui->verticalLayoutWidget_6->setStyleSheet("background:rgb(211, 211, 211)");
+    ui->btnGedMode->setStyleSheet("background:gray");
+    ui->btnGedMode->setFixedSize((ui->verticalLayoutWidget_5->width() - 30), 20);
+    ui->vLayoutNormalFlashGedMode->setContentsMargins(20, 0, 20, 15);
+}
+
+void setRightButtons(Ui::ElisMainWidget *ui) {
+
+}
+
 ElisMainWidget::ElisMainWidget(QWidget *parent) :
         QWidget(parent), ui(new Ui::ElisMainWidget) {
     ui->setupUi(this);
@@ -134,8 +145,9 @@ ElisMainWidget::ElisMainWidget(QWidget *parent) :
     setGLayoutLightSetting(ui);
     setPassengerAuthorization(ui);
     setGLayoutStressTest(ui);
+    setNormalFlashGedMode(ui);
+    setRightButtons(ui);
 
-    ui->verticalLayoutWidget_6->setStyleSheet("background:rgb(211, 211, 211)");
     ui->verticalLayoutWidget_7->setStyleSheet("background:rgb(211, 211, 211)");
 
     ui->tvExitTotal->setStyleSheet("background:white");
