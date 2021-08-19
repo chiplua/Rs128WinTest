@@ -57,11 +57,18 @@ void setHLayoutPassengers(Ui::ElisMainWidget *ui) {
     setVLayoutPassengersRight(ui);
 }
 
+void setVLayoutModeSetting(Ui::ElisMainWidget *ui) {
+    ui->verticalLayoutWidget_2->setStyleSheet("background:rgb(211, 211, 211)");
+    ui->btnGateModeSetting->setStyleSheet("background:gray");
+    ui->btnGateModeSetting->setFixedSize((ui->verticalLayoutWidget_2->width() - 30), 20);
+    ui->vLayoutModeSetting->setContentsMargins(20, 40, 10, 0);
+}
+
 void setVLayoutAisleMode(Ui::ElisMainWidget *ui) {
     ui->verticalLayoutWidget_3->setStyleSheet("background:rgb(211, 211, 211)");
     ui->btnAisleModeSetting->setStyleSheet("background:gray");
     ui->btnAisleModeSetting->setFixedSize((ui->verticalLayoutWidget_6->width() - 40), 20);
-    ui->vLayoutAisleMode->setContentsMargins(20, 0, 20, 0);
+    ui->vLayoutAisleMode->setContentsMargins(20, 0, 20, 10);
 }
 
 ElisMainWidget::ElisMainWidget(QWidget *parent) :
@@ -70,7 +77,7 @@ ElisMainWidget::ElisMainWidget(QWidget *parent) :
 
     setHLayoutCom(ui);
     setHLayoutPassengers(ui);
-    ui->verticalLayoutWidget_2->setStyleSheet("background:rgb(211, 211, 211)");
+    setVLayoutModeSetting(ui);
     ui->verticalLayoutWidget_4->setStyleSheet("background:rgb(211, 211, 211)");
     ui->verticalLayoutWidget_5->setStyleSheet("background:rgb(211, 211, 211)");
     ui->verticalLayoutWidget_6->setStyleSheet("background:rgb(211, 211, 211)");

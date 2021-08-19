@@ -304,7 +304,7 @@ p, li { white-space: pre-wrap; }
    </property>
    <layout class="QVBoxLayout" name="vLayoutModeSetting">
     <property name="topMargin">
-     <number>40</number>
+     <number>0</number>
     </property>
     <property name="rightMargin">
      <number>0</number>
