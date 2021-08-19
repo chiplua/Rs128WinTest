@@ -628,7 +628,7 @@ p, li { white-space: pre-wrap; }
      <height>202</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout_8">
+   <layout class="QVBoxLayout" name="vLayoutRightButtons">
     <item>
      <widget class="QPushButton" name="btnVersionRequest">
       <property name="text">

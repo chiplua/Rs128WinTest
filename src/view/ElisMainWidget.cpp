@@ -163,6 +163,7 @@ void setRightButtons(Ui::ElisMainWidget *ui) {
     ui->btnSensortest->setPalette(getButtonCommonPalette());
     ui->btnClearInfo->setStyleSheet("background:gray");
     ui->btnClearInfo->setPalette(getButtonCommonPalette());
+    ui->vLayoutRightButtons->setContentsMargins(20, 10, 20, 10);
 }
 
 ElisMainWidget::ElisMainWidget(QWidget *parent) :
