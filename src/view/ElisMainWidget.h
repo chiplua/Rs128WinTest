@@ -21,14 +21,34 @@ public:
     ~ElisMainWidget() override;
     public slots:
         void cbComListChanged(int i);
+        void btnOpenComClicked();
+        void btnCloseComClicked();
+        void btnCurrentStatusRequestPressed();
+        void btnOkPressed();
+        void btnParamterSettingPressed();
+        void btnGateModeSettingPressed();
+        void btnAisleModeSettingPressed();
+        void btnTestModulePressed();
+        void btnTopIndicatorLigthPressed();
+        void btnPassageAuthorizationPressed();
+        void btnStartStressTestPressed();
+        void btnStopStressTestPressed();
 
 private:
     Ui::ElisMainWidget *ui;
-    void initComboBox(Ui::ElisMainWidget *ui);
-    void setHLayoutCom(Ui::ElisMainWidget *ui);
     QString serialPortName;
     QStringList serialPortsNames;
     SerialPort serialPort;
+    void initComboBox(Ui::ElisMainWidget *ui);
+    void setHLayoutCom(Ui::ElisMainWidget *ui);
+    void setVLayoutPassengersRight(Ui::ElisMainWidget *ui);
+    void setHLayoutPassengers(Ui::ElisMainWidget *ui);
+    void setVLayoutModeSetting(Ui::ElisMainWidget *ui);
+    void setVLayoutAisleMode(Ui::ElisMainWidget *ui);
+    void setVLayoutTestParam(Ui::ElisMainWidget *ui);
+    void setGLayoutLightSetting(Ui::ElisMainWidget *ui);
+    void setPassengerAuthorization(Ui::ElisMainWidget *ui);
+    void setGLayoutStressTest(Ui::ElisMainWidget *ui);
 };
 
 

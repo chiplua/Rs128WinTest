@@ -24,10 +24,58 @@ void ElisMainWidget::cbComListChanged(int i) {
     qDebug() << serialPortName << " opened " << isOpendSuccess;
 
     if (isOpendSuccess) {
-        ui->tbDisplayInfo->append(serialPortName + "open success");
+        ui->tbDisplayInfo->append(serialPortName + " open success");
     } else {
-        ui->tbDisplayInfo->append(serialPortName + "open fail");
+        ui->tbDisplayInfo->append(serialPortName + " open fail");
     }
+}
+
+void ElisMainWidget::btnOpenComClicked() {
+    ui->tbDisplayInfo->append("Open the com port pressed");
+}
+
+void ElisMainWidget::btnCloseComClicked() {
+    ui->tbDisplayInfo->append("Close the com port pressed");
+}
+
+void ElisMainWidget::btnCurrentStatusRequestPressed() {
+    ui->tbDisplayInfo->append("Current status request button pressed");
+}
+
+void ElisMainWidget::btnOkPressed() {
+    ui->tbDisplayInfo->append("Ok button pressed");
+}
+
+void ElisMainWidget::btnParamterSettingPressed() {
+    ui->tbDisplayInfo->append("Parameter setting pressed");
+}
+
+void ElisMainWidget::btnGateModeSettingPressed() {
+    ui->tbDisplayInfo->append("Gate mode setting pressed");
+}
+
+void ElisMainWidget::btnAisleModeSettingPressed() {
+    ui->tbDisplayInfo->append("Aisle mode setting pressed");
+}
+
+void ElisMainWidget::btnTestModulePressed() {
+    ui->tbDisplayInfo->append("Test module pressed");
+}
+
+void ElisMainWidget::btnTopIndicatorLigthPressed() {
+    ui->tbDisplayInfo->append("Top indicator light pressed");
+}
+
+void ElisMainWidget::btnPassageAuthorizationPressed() {
+    ui->tbDisplayInfo->append("Passage authorization pressed");
+}
+
+void ElisMainWidget::btnStartStressTestPressed() {
+    ui->tbDisplayInfo->append("Start stress test pressed");
+}
+
+void ElisMainWidget::btnStopStressTestPressed() {
+    ui->tbDisplayInfo->append("Stop stress test pressed");
 }
 
 void ElisMainWidget::initComboBox(Ui::ElisMainWidget *ui) {
@@ -57,16 +105,24 @@ void ElisMainWidget::initComboBox(Ui::ElisMainWidget *ui) {
 
 void ElisMainWidget::setHLayoutCom(Ui::ElisMainWidget *ui) {
     ui->horizontalLayoutWidget->setStyleSheet("background:rgb(211, 211, 211)");
+    ElisMainWidget::initComboBox(ui);
+
     ui->hLayoutCom->setSpacing(20);
     ui->btnOpenCom->setStyleSheet("background:gray");
     ui->btnOpenCom->setPalette(getButtonCommonPalette());
+    connect(ui->btnOpenCom, SIGNAL(clicked()), this, SLOT(btnOpenComClicked()));
+
     ui->btnCloseCom->setStyleSheet("background:gray");
     ui->btnCloseCom->setPalette(getButtonCommonPalette());
+    connect(ui->btnCloseCom, SIGNAL(clicked()), this, SLOT(btnCloseComClicked()));
+
     ui->btnCurrentStatusRequest->setStyleSheet("background:gray");
     ui->btnCurrentStatusRequest->setPalette(getButtonCommonPalette());
+    connect(ui->btnCurrentStatusRequest, SIGNAL(clicked()), this, SLOT(btnCurrentStatusRequestPressed()));
+
     ui->btnOk->setStyleSheet("background:gray");
     ui->btnOk->setPalette(getButtonCommonPalette());
-    ElisMainWidget::initComboBox(ui);
+    connect(ui->btnOk, SIGNAL(clicked()), this, SLOT(btnOkPressed()));
 }
 
 void setVLayoutPassengersLeft(Ui::ElisMainWidget *ui) {
@@ -91,7 +147,7 @@ void setVLayoutPassengersLeft(Ui::ElisMainWidget *ui) {
     ui->tvPassengerAuthorizationTimeout->setStyleSheet("background:white");
 }
 
-void setVLayoutPassengersRight(Ui::ElisMainWidget *ui) {
+void ElisMainWidget::setVLayoutPassengersRight(Ui::ElisMainWidget *ui) {
     ui->vLayoutPassengerRight1->setAlignment(Qt::AlignLeft);
     ui->vLayoutPassengerRight1->setSpacing(10);
     ui->vLayoutPassengerRight1->setContentsMargins(0, 5, 5, 5);
@@ -114,33 +170,38 @@ void setVLayoutPassengersRight(Ui::ElisMainWidget *ui) {
 
     ui->btnParameterSetting->setStyleSheet("background:gray");
     ui->btnParameterSetting->setPalette(getButtonCommonPalette());
+    connect(ui->btnParameterSetting, SIGNAL(clicked()), this, SLOT(btnParamterSettingPressed()));
 }
 
-void setHLayoutPassengers(Ui::ElisMainWidget *ui) {
+void ElisMainWidget::setHLayoutPassengers(Ui::ElisMainWidget *ui) {
     ui->horizontalLayoutWidget_2->setStyleSheet("background:rgb(211, 211, 211)");
     ui->hLayoutPassenger->setSpacing(5);
     setVLayoutPassengersLeft(ui);
     setVLayoutPassengersRight(ui);
 }
 
-void setVLayoutModeSetting(Ui::ElisMainWidget *ui) {
+void ElisMainWidget::setVLayoutModeSetting(Ui::ElisMainWidget *ui) {
     ui->verticalLayoutWidget_2->setStyleSheet("background:rgb(211, 211, 211)");
     ui->btnGateModeSetting->setStyleSheet("background:gray");
     ui->btnGateModeSetting->setFixedSize((ui->verticalLayoutWidget_2->width() - 30), 20);
     ui->btnGateModeSetting->setPalette(getButtonCommonPalette());
+    connect(ui->btnGateModeSetting, SIGNAL(clicked()), this, SLOT(btnGateModeSettingPressed()));
+
     ui->vLayoutModeSetting->setContentsMargins(20, 40, 20, 0);
     ui->cbExitMode->setStyleSheet("background:white");
 }
 
-void setVLayoutAisleMode(Ui::ElisMainWidget *ui) {
+void ElisMainWidget::setVLayoutAisleMode(Ui::ElisMainWidget *ui) {
     ui->verticalLayoutWidget_3->setStyleSheet("background:rgb(211, 211, 211)");
     ui->btnAisleModeSetting->setStyleSheet("background:gray");
     ui->btnAisleModeSetting->setFixedSize((ui->verticalLayoutWidget_6->width() - 40), 20);
     ui->btnAisleModeSetting->setPalette(getButtonCommonPalette());
+    connect(ui->btnAisleModeSetting, SIGNAL(clicked()), this, SLOT(btnAisleModeSettingPressed()));
+
     ui->vLayoutAisleMode->setContentsMargins(20, 50, 20, 25);
 }
 
-void setVLayoutTestParam(Ui::ElisMainWidget *ui) {
+void ElisMainWidget::setVLayoutTestParam(Ui::ElisMainWidget *ui) {
     ui->verticalLayoutWidget_4->setStyleSheet("background:rgb(211, 211, 211)");
     ui->tvTestParam->setFixedSize(40, 30);
     ui->tvTestParam->setStyleSheet("background:white");
@@ -148,11 +209,13 @@ void setVLayoutTestParam(Ui::ElisMainWidget *ui) {
     ui->btnTestModule->setStyleSheet("background:gray");
     ui->btnTestModule->setFixedSize((ui->verticalLayoutWidget_4->width() - 30), 20);
     ui->btnTestModule->setPalette(getButtonCommonPalette());
+    connect(ui->btnTestModule, SIGNAL(clicked()), this, SLOT(btnTestModulePressed()));
+
     ui->vLayoutTestParam->setContentsMargins(20, 20, 20, 25);
     ui->cbTestModule->setStyleSheet("background:white");
 }
 
-void setGLayoutLightSetting(Ui::ElisMainWidget *ui) {
+void ElisMainWidget::setGLayoutLightSetting(Ui::ElisMainWidget *ui) {
     ui->gridLayoutWidget->setStyleSheet("background:rgb(211, 211, 211)");
     ui->gLayoutLight->setContentsMargins(20, 15, 20, 15);
 
@@ -168,25 +231,31 @@ void setGLayoutLightSetting(Ui::ElisMainWidget *ui) {
 
     ui->btnTopIndicatorLight->setStyleSheet("background:gray");
     ui->btnTopIndicatorLight->setPalette(getButtonCommonPalette());
+    connect(ui->btnTopIndicatorLight, SIGNAL(clicked()), this, SLOT(btnTopIndicatorLigthPressed()));
+
     ui->cbTopIndicatorLight->setStyleSheet("background:white");
 }
 
-void setPassengerAuthorization(Ui::ElisMainWidget *ui) {
+void ElisMainWidget::setPassengerAuthorization(Ui::ElisMainWidget *ui) {
     ui->verticalLayoutWidget_5->setStyleSheet("background:rgb(211, 211, 211)");
     ui->btnPassageAuthorization->setStyleSheet("background:gray");
     ui->btnPassageAuthorization->setFixedSize((ui->verticalLayoutWidget_5->width() - 30), 20);
     ui->btnPassageAuthorization->setPalette(getButtonCommonPalette());
+    connect(ui->btnPassageAuthorization, SIGNAL(clicked()), this, SLOT(btnPassageAuthorizationPressed()));
     ui->vLayoutPassengerAuthorization->setContentsMargins(20, 0, 20, 15);
 }
 
-void setGLayoutStressTest(Ui::ElisMainWidget *ui) {
+void ElisMainWidget::setGLayoutStressTest(Ui::ElisMainWidget *ui) {
     ui->gridLayoutWidget_2->setStyleSheet("background:rgb(211, 211, 211)");
     ui->gLayoutStressTest->setContentsMargins(20, 20, 20, 20);
 
     ui->btnStartStressTest->setStyleSheet("background:gray");
     ui->btnStartStressTest->setPalette(getButtonCommonPalette());
+    connect(ui->btnStartStressTest, SIGNAL(clicked()), this, SLOT(btnStartStressTestPressed()));
+
     ui->btnStopStressTest->setStyleSheet("background:gray");
     ui->btnStopStressTest->setPalette(getButtonCommonPalette());
+    connect(ui->btnStopStressTest, SIGNAL(clicked()), this, SLOT(btnStopStressTestPressed()));
 
     ui->tvStressTestIntervalTime->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->tvStressTestIntervalTime->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
