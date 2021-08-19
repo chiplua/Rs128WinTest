@@ -99,6 +99,13 @@ void setGLayoutLightSetting(Ui::ElisMainWidget *ui) {
     ui->btnTopIndicatorLight->setStyleSheet("background:gray");
 }
 
+void setPassengerAuthorization(Ui::ElisMainWidget *ui) {
+    ui->verticalLayoutWidget_5->setStyleSheet("background:rgb(211, 211, 211)");
+    ui->btnPassageAuthorization->setStyleSheet("background:gray");
+    ui->btnPassageAuthorization->setFixedSize((ui->verticalLayoutWidget_5->width() - 40), 20);
+    ui->vLayoutPassengerAuthorization->setContentsMargins(25, 0, 25, 15);
+}
+
 ElisMainWidget::ElisMainWidget(QWidget *parent) :
         QWidget(parent), ui(new Ui::ElisMainWidget) {
     ui->setupUi(this);
@@ -108,7 +115,7 @@ ElisMainWidget::ElisMainWidget(QWidget *parent) :
     setVLayoutModeSetting(ui);
     setVLayoutTestParam(ui);
     setGLayoutLightSetting(ui);
-    ui->verticalLayoutWidget_5->setStyleSheet("background:rgb(211, 211, 211)");
+    setPassengerAuthorization(ui);
     ui->verticalLayoutWidget_6->setStyleSheet("background:rgb(211, 211, 211)");
     ui->verticalLayoutWidget_7->setStyleSheet("background:rgb(211, 211, 211)");
     ui->gridLayoutWidget_2->setStyleSheet("background:rgb(211, 211, 211)");

@@ -562,7 +562,7 @@ p, li { white-space: pre-wrap; }
      <height>91</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout_6">
+   <layout class="QVBoxLayout" name="vLayoutPassengerAuthorization">
     <item>
      <widget class="QRadioButton" name="radioButton_5">
       <property name="text">
