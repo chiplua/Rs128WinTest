@@ -13,29 +13,46 @@ void setHLayoutCom(Ui::ElisMainWidget *ui) {
 }
 
 void setVLayoutPassengersLeft(Ui::ElisMainWidget *ui) {
-    ui->vLayoutPassenger->setAlignment(Qt::AlignLeft);
-    ui->vLayoutPassenger->setSpacing(10);
-    ui->vLayoutPassenger->setContentsMargins(5, 5, 0, 5);
+    ui->vLayoutPassengerLeft1->setAlignment(Qt::AlignLeft);
+    ui->vLayoutPassengerLeft1->setSpacing(10);
+    ui->vLayoutPassengerLeft1->setContentsMargins(5, 5, 0, 5);
+    ui->vLayoutPassengerLeft2->setContentsMargins(5, 5, 0, 30);
 
-    ui->tvMaxPassage->setFixedSize(100, 30);
+    ui->tvMaxPassage->setFixedSize(80, 30);
     ui->tvMaxPassage->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->tvMaxPassage->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
-    ui->tvFlapClosingTimeout->setFixedSize(100, 30);
+    ui->tvFlapClosingTimeout->setFixedSize(80, 30);
     ui->tvFlapClosingTimeout->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->tvFlapClosingTimeout->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
-    ui->tvPassengerAuthorizationTimeout->setFixedSize(100, 30);
+    ui->tvPassengerAuthorizationTimeout->setFixedSize(80, 30);
     ui->tvPassengerAuthorizationTimeout->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->tvPassengerAuthorizationTimeout->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 }
 
 void setVLayoutPassengersRight(Ui::ElisMainWidget *ui) {
+    ui->vLayoutPassengerRight1->setAlignment(Qt::AlignLeft);
+    ui->vLayoutPassengerRight1->setSpacing(10);
+    ui->vLayoutPassengerRight1->setContentsMargins(0, 5, 5, 5);
+    ui->vLayoutPassengerRight2->setContentsMargins(0, 10, 5, 30);
 
+    ui->tvSensorTimeout->setFixedSize(80, 30);
+    ui->tvSensorTimeout->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->tvSensorTimeout->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+    ui->tvLeaveAisleTimeout->setFixedSize(80, 30);
+    ui->tvLeaveAisleTimeout->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->tvLeaveAisleTimeout->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+    ui->tvOpenSafetyTimeout->setFixedSize(80, 30);
+    ui->tvOpenSafetyTimeout->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->tvOpenSafetyTimeout->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 }
 
 void setHLayoutPassengers(Ui::ElisMainWidget *ui) {
     ui->horizontalLayoutWidget_2->setStyleSheet("background:rgb(211, 211, 211)");
+    ui->hLayoutPassenger->setSpacing(5);
     setVLayoutPassengersLeft(ui);
     setVLayoutPassengersRight(ui);
 }
