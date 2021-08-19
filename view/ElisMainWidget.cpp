@@ -10,6 +10,10 @@
 void setHLayoutCom(Ui::ElisMainWidget *ui) {
     ui->horizontalLayoutWidget->setStyleSheet("background:rgb(211, 211, 211)");
     ui->hLayoutCom->setSpacing(20);
+    ui->btnOpenCom->setStyleSheet("background:gray");
+    ui->btnCloseCom->setStyleSheet("background:gray");
+    ui->btnCurrentStatusRequest->setStyleSheet("background:gray");
+    ui->btnOk->setStyleSheet("background:gray");
 }
 
 void setVLayoutPassengersLeft(Ui::ElisMainWidget *ui) {
@@ -48,6 +52,7 @@ void setVLayoutPassengersRight(Ui::ElisMainWidget *ui) {
     ui->tvOpenSafetyTimeout->setFixedSize(80, 30);
     ui->tvOpenSafetyTimeout->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->tvOpenSafetyTimeout->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->btnParameterSetting->setStyleSheet("background:gray");
 }
 
 void setHLayoutPassengers(Ui::ElisMainWidget *ui) {
@@ -77,7 +82,6 @@ void setVLayoutTestParam(Ui::ElisMainWidget *ui) {
     ui->btnTestModule->setStyleSheet("background:gray");
     ui->btnTestModule->setFixedSize((ui->verticalLayoutWidget_4->width() - 30), 20);
     ui->vLayoutTestParam->setContentsMargins(20, 20, 20, 25);
-
 }
 
 ElisMainWidget::ElisMainWidget(QWidget *parent) :
