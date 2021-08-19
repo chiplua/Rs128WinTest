@@ -18,12 +18,12 @@ Q_OBJECT
 
 public:
     explicit ElisMainWidget(QWidget *parent = nullptr);
-
     ~ElisMainWidget() override;
+    public slots:
+        void cbComListChanged(int i);
 
 private:
     Ui::ElisMainWidget *ui;
-    void cbComListChanged(int i);
     void initComboBox(Ui::ElisMainWidget *ui);
     void setHLayoutCom(Ui::ElisMainWidget *ui);
     QString serialPortName;
