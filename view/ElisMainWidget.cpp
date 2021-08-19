@@ -7,6 +7,12 @@
 #include "ElisMainWidget.h"
 #include "ui_ElisMainWidget.h"
 
+void setVLayoutAisleMode(Ui::ElisMainWidget *ui) {
+    ui->verticalLayoutWidget_3->setStyleSheet("background:rgb(211, 211, 211)");
+    ui->btnAisleModeSetting->setStyleSheet("background:gray");
+    ui->btnAisleModeSetting->setFixedSize((ui->verticalLayoutWidget_6->width() - 40), 20);
+    ui->vLayoutAisleMode->setContentsMargins(20, 0, 20, 0);
+}
 
 ElisMainWidget::ElisMainWidget(QWidget *parent) :
         QWidget(parent), ui(new Ui::ElisMainWidget) {
@@ -14,7 +20,6 @@ ElisMainWidget::ElisMainWidget(QWidget *parent) :
     ui->horizontalLayoutWidget->setStyleSheet("background:rgb(211, 211, 211)");
     ui->horizontalLayoutWidget_2->setStyleSheet("background:rgb(211, 211, 211)");
     ui->verticalLayoutWidget_2->setStyleSheet("background:rgb(211, 211, 211)");
-    ui->verticalLayoutWidget_3->setStyleSheet("background:rgb(211, 211, 211)");
     ui->verticalLayoutWidget_4->setStyleSheet("background:rgb(211, 211, 211)");
     ui->verticalLayoutWidget_5->setStyleSheet("background:rgb(211, 211, 211)");
     ui->verticalLayoutWidget_6->setStyleSheet("background:rgb(211, 211, 211)");
@@ -34,11 +39,12 @@ ElisMainWidget::ElisMainWidget(QWidget *parent) :
     ui->tvPassengerAuthorizationTimeout->setStyleSheet("background:white");
     ui->tvSensorTimeout->setStyleSheet("background:white");
     ui->tvStressTestIntervalTime->setStyleSheet("background:white");
+    ui->tvTestParam->setStyleSheet("background:white");
     ui->cbComList->setStyleSheet("background:white");
     ui->cbExitMode->setStyleSheet("background:white");
     ui->cbTopIndicatorLight->setStyleSheet("background:white");
     ui->cbTestModule->setStyleSheet("background:white");
-
+    setVLayoutAisleMode(ui);
 }
 
 ElisMainWidget::~ElisMainWidget() {
