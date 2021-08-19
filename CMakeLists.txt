@@ -34,7 +34,7 @@ INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR})
 
 
 #include_directories(/usr/local/Cellar/qt@5/5.15.2/lib/QtSerialPort.framework/)
-add_executable(${PROJECT_NAME} main.cpp src/serialport/SerialPort.cpp src/serialport/SerialPort.h src/view/ElisMainWidget.cpp src/view/ElisMainWidget.h src/view/ElisMainWidget.ui)
+add_executable(${PROJECT_NAME} example/main.cpp src/serialport/SerialPort.cpp src/serialport/SerialPort.h src/view/ElisMainWidget.cpp src/view/ElisMainWidget.h src/view/ElisMainWidget.ui)
 target_link_libraries(${PROJECT_NAME} ${REQUIRED_LIBS_QUALIFIED})
 
 TARGET_LINK_LIBRARIES(${PROJECT_NAME} ${Qt5Core_LIBRARIES}  ${Qt5Widgets_LIBRARIES}  ${Qt5SerialPort_LIBRARIES})

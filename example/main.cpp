@@ -1,6 +1,6 @@
 #include <QApplication>
 #include <QPushButton>
-#include "view/ElisMainWidget.h"
+#include "../src/view/ElisMainWidget.h"
 
 int main(int argc, char *argv[]) {
     QApplication a(argc, argv);

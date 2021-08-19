@@ -84,6 +84,21 @@ void setVLayoutTestParam(Ui::ElisMainWidget *ui) {
     ui->vLayoutTestParam->setContentsMargins(20, 20, 20, 25);
 }
 
+void setGLayoutLightSetting(Ui::ElisMainWidget *ui) {
+    ui->gridLayoutWidget->setStyleSheet("background:rgb(211, 211, 211)");
+    ui->gLayoutLight->setContentsMargins(20, 15, 20, 15);
+
+    ui->tvLightDuration->setFixedSize(200, 30);;
+    ui->tvLightDuration->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->tvLightDuration->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+    ui->tvFlashPeriod->setFixedSize(200, 30);
+    ui->tvFlashPeriod->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->tvFlapClosingTimeout->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+    ui->btnTopIndicatorLight->setStyleSheet("background:gray");
+}
+
 ElisMainWidget::ElisMainWidget(QWidget *parent) :
         QWidget(parent), ui(new Ui::ElisMainWidget) {
     ui->setupUi(this);
@@ -92,10 +107,10 @@ ElisMainWidget::ElisMainWidget(QWidget *parent) :
     setHLayoutPassengers(ui);
     setVLayoutModeSetting(ui);
     setVLayoutTestParam(ui);
+    setGLayoutLightSetting(ui);
     ui->verticalLayoutWidget_5->setStyleSheet("background:rgb(211, 211, 211)");
     ui->verticalLayoutWidget_6->setStyleSheet("background:rgb(211, 211, 211)");
     ui->verticalLayoutWidget_7->setStyleSheet("background:rgb(211, 211, 211)");
-    ui->gridLayoutWidget->setStyleSheet("background:rgb(211, 211, 211)");
     ui->gridLayoutWidget_2->setStyleSheet("background:rgb(211, 211, 211)");
 
     ui->tvExitTotal->setStyleSheet("background:white");
