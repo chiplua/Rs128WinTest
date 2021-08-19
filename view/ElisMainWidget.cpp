@@ -7,6 +7,26 @@
 #include "ElisMainWidget.h"
 #include "ui_ElisMainWidget.h"
 
+void setHLayoutCom(Ui::ElisMainWidget *ui) {
+    ui->horizontalLayoutWidget->setStyleSheet("background:rgb(211, 211, 211)");
+    ui->hLayoutCom->setSpacing(20);
+}
+
+void setVLayoutPassengersLeft(Ui::ElisMainWidget *ui) {
+    ui->vLayoutPassenger->setAlignment(Qt::AlignLeft);
+    ui->vLayoutPassenger->setSpacing(20);
+}
+
+void setVLayoutPassengersRight(Ui::ElisMainWidget *ui) {
+
+}
+
+void setHLayoutPassengers(Ui::ElisMainWidget *ui) {
+    ui->horizontalLayoutWidget_2->setStyleSheet("background:rgb(211, 211, 211)");
+    setVLayoutPassengersLeft(ui);
+    setVLayoutPassengersRight(ui);
+}
+
 void setVLayoutAisleMode(Ui::ElisMainWidget *ui) {
     ui->verticalLayoutWidget_3->setStyleSheet("background:rgb(211, 211, 211)");
     ui->btnAisleModeSetting->setStyleSheet("background:gray");
@@ -17,8 +37,9 @@ void setVLayoutAisleMode(Ui::ElisMainWidget *ui) {
 ElisMainWidget::ElisMainWidget(QWidget *parent) :
         QWidget(parent), ui(new Ui::ElisMainWidget) {
     ui->setupUi(this);
-    ui->horizontalLayoutWidget->setStyleSheet("background:rgb(211, 211, 211)");
-    ui->horizontalLayoutWidget_2->setStyleSheet("background:rgb(211, 211, 211)");
+
+    setHLayoutCom(ui);
+    setHLayoutPassengers(ui);
     ui->verticalLayoutWidget_2->setStyleSheet("background:rgb(211, 211, 211)");
     ui->verticalLayoutWidget_4->setStyleSheet("background:rgb(211, 211, 211)");
     ui->verticalLayoutWidget_5->setStyleSheet("background:rgb(211, 211, 211)");

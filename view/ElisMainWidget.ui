@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Elis Test V1.0.0</string>
+   <string>Elis RS128 Test V1.0.0</string>
   </property>
   <widget class="QWidget" name="horizontalLayoutWidget">
    <property name="geometry">
@@ -24,7 +24,7 @@
    </property>
    <layout class="QHBoxLayout" name="hLayoutCom">
     <property name="spacing">
-     <number>20</number>
+     <number>0</number>
     </property>
     <item>
      <widget class="QComboBox" name="cbComList"/>
@@ -82,7 +82,7 @@
      <number>2</number>
     </property>
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout">
+     <layout class="QVBoxLayout" name="vLayoutPassenger">
       <property name="leftMargin">
        <number>2</number>
       </property>
