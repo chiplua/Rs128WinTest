@@ -14,7 +14,20 @@ void setHLayoutCom(Ui::ElisMainWidget *ui) {
 
 void setVLayoutPassengersLeft(Ui::ElisMainWidget *ui) {
     ui->vLayoutPassenger->setAlignment(Qt::AlignLeft);
-    ui->vLayoutPassenger->setSpacing(20);
+    ui->vLayoutPassenger->setSpacing(10);
+    ui->vLayoutPassenger->setContentsMargins(5, 5, 0, 5);
+
+    ui->tvMaxPassage->setFixedSize(100, 30);
+    ui->tvMaxPassage->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->tvMaxPassage->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+    ui->tvFlapClosingTimeout->setFixedSize(100, 30);
+    ui->tvFlapClosingTimeout->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->tvFlapClosingTimeout->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+    ui->tvPassengerAuthorizationTimeout->setFixedSize(100, 30);
+    ui->tvPassengerAuthorizationTimeout->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->tvPassengerAuthorizationTimeout->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 }
 
 void setVLayoutPassengersRight(Ui::ElisMainWidget *ui) {

@@ -84,16 +84,16 @@
     <item>
      <layout class="QVBoxLayout" name="vLayoutPassenger">
       <property name="leftMargin">
-       <number>2</number>
+       <number>0</number>
       </property>
       <property name="topMargin">
-       <number>2</number>
+       <number>0</number>
       </property>
       <property name="rightMargin">
-       <number>2</number>
+       <number>0</number>
       </property>
       <property name="bottomMargin">
-       <number>2</number>
+       <number>0</number>
       </property>
       <item>
        <widget class="QLabel" name="label">
@@ -114,7 +114,7 @@ Timeout(0~255Sec)</string>
       <item>
        <widget class="QLabel" name="label_3">
         <property name="text">
-         <string>Passenger Authorization
+         <string>Passenger Authorize
 Timeout(1~255Sec)</string>
         </property>
        </widget>
