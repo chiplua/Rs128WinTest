@@ -2,7 +2,7 @@
 // Created by chiplua on 2021/8/17.
 //
 
-#include <qDebug>
+#include <QDebug>
 #include <qserialport.h>
 #include "SerialPort.h"
 
