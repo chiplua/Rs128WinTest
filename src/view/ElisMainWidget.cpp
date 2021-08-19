@@ -24,6 +24,7 @@ void setHLayoutCom(Ui::ElisMainWidget *ui) {
     ui->btnCurrentStatusRequest->setPalette(getButtonCommonPalette());
     ui->btnOk->setStyleSheet("background:gray");
     ui->btnOk->setPalette(getButtonCommonPalette());
+    ui->cbComList->setStyleSheet("background:white");
 }
 
 void setVLayoutPassengersLeft(Ui::ElisMainWidget *ui) {
@@ -35,14 +36,17 @@ void setVLayoutPassengersLeft(Ui::ElisMainWidget *ui) {
     ui->tvMaxPassage->setFixedSize(80, 30);
     ui->tvMaxPassage->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->tvMaxPassage->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->tvMaxPassage->setStyleSheet("background:white");
 
     ui->tvFlapClosingTimeout->setFixedSize(80, 30);
     ui->tvFlapClosingTimeout->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->tvFlapClosingTimeout->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->tvFlapClosingTimeout->setStyleSheet("background:white");
 
     ui->tvPassengerAuthorizationTimeout->setFixedSize(80, 30);
     ui->tvPassengerAuthorizationTimeout->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->tvPassengerAuthorizationTimeout->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->tvPassengerAuthorizationTimeout->setStyleSheet("background:white");
 }
 
 void setVLayoutPassengersRight(Ui::ElisMainWidget *ui) {
@@ -54,14 +58,18 @@ void setVLayoutPassengersRight(Ui::ElisMainWidget *ui) {
     ui->tvSensorTimeout->setFixedSize(80, 30);
     ui->tvSensorTimeout->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->tvSensorTimeout->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->tvSensorTimeout->setStyleSheet("background:white");
 
     ui->tvLeaveAisleTimeout->setFixedSize(80, 30);
     ui->tvLeaveAisleTimeout->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->tvLeaveAisleTimeout->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->tvLeaveAisleTimeout->setStyleSheet("background:white");
 
     ui->tvOpenSafetyTimeout->setFixedSize(80, 30);
     ui->tvOpenSafetyTimeout->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->tvOpenSafetyTimeout->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->tvOpenSafetyTimeout->setStyleSheet("background:white");
+
     ui->btnParameterSetting->setStyleSheet("background:gray");
     ui->btnParameterSetting->setPalette(getButtonCommonPalette());
 }
@@ -79,6 +87,7 @@ void setVLayoutModeSetting(Ui::ElisMainWidget *ui) {
     ui->btnGateModeSetting->setFixedSize((ui->verticalLayoutWidget_2->width() - 30), 20);
     ui->btnGateModeSetting->setPalette(getButtonCommonPalette());
     ui->vLayoutModeSetting->setContentsMargins(20, 40, 20, 0);
+    ui->cbExitMode->setStyleSheet("background:white");
 }
 
 void setVLayoutAisleMode(Ui::ElisMainWidget *ui) {
@@ -92,10 +101,13 @@ void setVLayoutAisleMode(Ui::ElisMainWidget *ui) {
 void setVLayoutTestParam(Ui::ElisMainWidget *ui) {
     ui->verticalLayoutWidget_4->setStyleSheet("background:rgb(211, 211, 211)");
     ui->tvTestParam->setFixedSize(40, 30);
+    ui->tvTestParam->setStyleSheet("background:white");
+
     ui->btnTestModule->setStyleSheet("background:gray");
     ui->btnTestModule->setFixedSize((ui->verticalLayoutWidget_4->width() - 30), 20);
     ui->btnTestModule->setPalette(getButtonCommonPalette());
     ui->vLayoutTestParam->setContentsMargins(20, 20, 20, 25);
+    ui->cbTestModule->setStyleSheet("background:white");
 }
 
 void setGLayoutLightSetting(Ui::ElisMainWidget *ui) {
@@ -105,13 +117,16 @@ void setGLayoutLightSetting(Ui::ElisMainWidget *ui) {
     ui->tvLightDuration->setFixedSize(200, 30);;
     ui->tvLightDuration->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->tvLightDuration->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->tvLightDuration->setStyleSheet("background:white");
 
     ui->tvFlashPeriod->setFixedSize(200, 30);
     ui->tvFlashPeriod->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    ui->tvFlapClosingTimeout->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->tvFlashPeriod->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->tvFlashPeriod->setStyleSheet("background:white");
 
     ui->btnTopIndicatorLight->setStyleSheet("background:gray");
     ui->btnTopIndicatorLight->setPalette(getButtonCommonPalette());
+    ui->cbTopIndicatorLight->setStyleSheet("background:white");
 }
 
 void setPassengerAuthorization(Ui::ElisMainWidget *ui) {
@@ -133,12 +148,15 @@ void setGLayoutStressTest(Ui::ElisMainWidget *ui) {
 
     ui->tvStressTestIntervalTime->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->tvStressTestIntervalTime->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->tvStressTestIntervalTime->setStyleSheet("background:white");
 
     ui->tvEntryTotal->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->tvEntryTotal->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->tvEntryTotal->setStyleSheet("background:white");
 
     ui->tvExitTotal->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->tvExitTotal->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->tvExitTotal->setStyleSheet("background:white");
 }
 
 void setNormalFlashGedMode(Ui::ElisMainWidget *ui) {
@@ -173,32 +191,13 @@ ElisMainWidget::ElisMainWidget(QWidget *parent) :
     setHLayoutCom(ui);
     setHLayoutPassengers(ui);
     setVLayoutModeSetting(ui);
+    setVLayoutAisleMode(ui);
     setVLayoutTestParam(ui);
     setGLayoutLightSetting(ui);
     setPassengerAuthorization(ui);
     setGLayoutStressTest(ui);
     setNormalFlashGedMode(ui);
     setRightButtons(ui);
-
-
-    ui->tvExitTotal->setStyleSheet("background:white");
-    ui->tvEntryTotal->setStyleSheet("background:white");
-    ui->tvFlapClosingTimeout->setStyleSheet("background:white");
-    ui->tvFlashPeriod->setStyleSheet("background:white");
-    ui->tvLeaveAisleTimeout->setStyleSheet("background:white");
-    ui->tvEntryTotal->setStyleSheet("background:white");
-    ui->tvLightDuration->setStyleSheet("background:white");
-    ui->tvMaxPassage->setStyleSheet("background:white");
-    ui->tvOpenSafetyTimeout->setStyleSheet("background:white");
-    ui->tvPassengerAuthorizationTimeout->setStyleSheet("background:white");
-    ui->tvSensorTimeout->setStyleSheet("background:white");
-    ui->tvStressTestIntervalTime->setStyleSheet("background:white");
-    ui->tvTestParam->setStyleSheet("background:white");
-    ui->cbComList->setStyleSheet("background:white");
-    ui->cbExitMode->setStyleSheet("background:white");
-    ui->cbTopIndicatorLight->setStyleSheet("background:white");
-    ui->cbTestModule->setStyleSheet("background:white");
-    setVLayoutAisleMode(ui);
 }
 
 ElisMainWidget::~ElisMainWidget() {
