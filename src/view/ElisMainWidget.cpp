@@ -4,8 +4,10 @@
 
 // You may need to build the project (run Qt uic code generator) to get "ui_ElisMainWidget.h" resolved
 
+#include <QSerialPortInfo>
 #include "ElisMainWidget.h"
 #include "ui_ElisMainWidget.h"
+#include <QDebug>
 
 QPalette getButtonCommonPalette() {
     QPalette pal;
@@ -13,7 +15,47 @@ QPalette getButtonCommonPalette() {
 
     return pal;
 }
-void setHLayoutCom(Ui::ElisMainWidget *ui) {
+
+void ElisMainWidget::cbComListChanged(int i) {
+    qDebug() << "cbComListChanged: i = %d, strList = %s" << i;
+    serialPortName = serialPortsNames.at(i);
+    qDebug() << "You select serial port %s " << serialPortName;
+    bool isOpendSuccess = serialPort.openPort(serialPortName);
+    qDebug() << serialPortName << " opened " << isOpendSuccess;
+
+    if (isOpendSuccess) {
+        ui->tbDisplayInfo->append(serialPortName + "open success");
+    } else {
+        ui->tbDisplayInfo->append(serialPortName + "open fail");
+    }
+}
+
+void ElisMainWidget::initComboBox(Ui::ElisMainWidget *ui) {
+            foreach (const QSerialPortInfo &info, QSerialPortInfo::availablePorts()) {
+            qDebug() << "Name : " << info.portName();
+            qDebug() << "Description : " << info.description();
+            qDebug() << "Manufacturer: " << info.manufacturer();
+            qDebug() << "Serial Number: " << info.serialNumber();
+            qDebug() << "System Location: " << info.systemLocation();
+
+            serialPortsNames << info.portName();
+        }
+
+    ui->cbComList->clear();
+    ui->cbComList->addItems(serialPortsNames);
+
+    if (ui->cbComList->count() == 1) {
+        serialPortName = serialPortsNames.at(0);
+        qDebug() << "You select serial port %s " << serialPortName;
+        bool isOpendSuccess = serialPort.openPort(serialPortName);
+        qDebug() << serialPortName << " opened " << isOpendSuccess;
+        ui->tbDisplayInfo->append(serialPortName + " open " + (isOpendSuccess ? "success" : "fail"));
+    } else {
+        connect(ui->cbComList, SIGNAL(currentIndexChanged(int)), this, SLOT(cbComListChanged(int)));
+    }
+}
+
+void ElisMainWidget::setHLayoutCom(Ui::ElisMainWidget *ui) {
     ui->horizontalLayoutWidget->setStyleSheet("background:rgb(211, 211, 211)");
     ui->hLayoutCom->setSpacing(20);
     ui->btnOpenCom->setStyleSheet("background:gray");
@@ -25,6 +67,7 @@ void setHLayoutCom(Ui::ElisMainWidget *ui) {
     ui->btnOk->setStyleSheet("background:gray");
     ui->btnOk->setPalette(getButtonCommonPalette());
     ui->cbComList->setStyleSheet("background:white");
+    ElisMainWidget::initComboBox(ui);
 }
 
 void setVLayoutPassengersLeft(Ui::ElisMainWidget *ui) {

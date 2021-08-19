@@ -6,8 +6,9 @@
 #define ELISRS128WINTEST_ELISMAINWIDGET_H
 
 #include <QWidget>
+#include "../serialport/SerialPort.h"
 
-
+using namespace ElisSerial;
 QT_BEGIN_NAMESPACE
 namespace Ui { class ElisMainWidget; }
 QT_END_NAMESPACE
@@ -22,6 +23,12 @@ public:
 
 private:
     Ui::ElisMainWidget *ui;
+    void cbComListChanged(int i);
+    void initComboBox(Ui::ElisMainWidget *ui);
+    void setHLayoutCom(Ui::ElisMainWidget *ui);
+    QString serialPortName;
+    QStringList serialPortsNames;
+    SerialPort serialPort;
 };
 
 

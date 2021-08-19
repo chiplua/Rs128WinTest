@@ -543,7 +543,7 @@ p, li { white-space: pre-wrap; }
     </item>
    </layout>
   </widget>
-  <widget class="QTextBrowser" name="textBrowser">
+  <widget class="QTextBrowser" name="tbDisplayInfo">
    <property name="geometry">
     <rect>
      <x>10</x>
