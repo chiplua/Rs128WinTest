@@ -458,7 +458,7 @@ p, li { white-space: pre-wrap; }
      <height>91</height>
     </rect>
    </property>
-   <layout class="QGridLayout" name="gridLayout_2">
+   <layout class="QGridLayout" name="gLayoutStressTest">
     <item row="1" column="1">
      <widget class="QTextEdit" name="tvStressTestIntervalTime">
       <property name="html">

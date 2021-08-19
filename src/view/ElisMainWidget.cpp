@@ -106,6 +106,23 @@ void setPassengerAuthorization(Ui::ElisMainWidget *ui) {
     ui->vLayoutPassengerAuthorization->setContentsMargins(25, 0, 25, 15);
 }
 
+void setGLayoutStressTest(Ui::ElisMainWidget *ui) {
+    ui->gridLayoutWidget_2->setStyleSheet("background:rgb(211, 211, 211)");
+    ui->gLayoutStressTest->setContentsMargins(20, 20, 20, 20);
+
+    ui->btnStartStressTest->setStyleSheet("background:gray");
+    ui->btnStopStressTest->setStyleSheet("background:gray");
+
+    ui->tvStressTestIntervalTime->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->tvStressTestIntervalTime->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+    ui->tvEntryTotal->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->tvEntryTotal->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+    ui->tvExitTotal->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->tvExitTotal->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+}
+
 ElisMainWidget::ElisMainWidget(QWidget *parent) :
         QWidget(parent), ui(new Ui::ElisMainWidget) {
     ui->setupUi(this);
@@ -116,9 +133,10 @@ ElisMainWidget::ElisMainWidget(QWidget *parent) :
     setVLayoutTestParam(ui);
     setGLayoutLightSetting(ui);
     setPassengerAuthorization(ui);
+    setGLayoutStressTest(ui);
+
     ui->verticalLayoutWidget_6->setStyleSheet("background:rgb(211, 211, 211)");
     ui->verticalLayoutWidget_7->setStyleSheet("background:rgb(211, 211, 211)");
-    ui->gridLayoutWidget_2->setStyleSheet("background:rgb(211, 211, 211)");
 
     ui->tvExitTotal->setStyleSheet("background:white");
     ui->tvEntryTotal->setStyleSheet("background:white");
