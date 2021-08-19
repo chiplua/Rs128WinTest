@@ -66,7 +66,6 @@ void ElisMainWidget::setHLayoutCom(Ui::ElisMainWidget *ui) {
     ui->btnCurrentStatusRequest->setPalette(getButtonCommonPalette());
     ui->btnOk->setStyleSheet("background:gray");
     ui->btnOk->setPalette(getButtonCommonPalette());
-    ui->cbComList->setStyleSheet("background:white");
     ElisMainWidget::initComboBox(ui);
 }
 
