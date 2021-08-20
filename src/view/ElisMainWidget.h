@@ -33,6 +33,13 @@ public:
         void btnPassageAuthorizationPressed();
         void btnStartStressTestPressed();
         void btnStopStressTestPressed();
+        void btnGedModePressed();
+        void btnVersionRequestPressed();
+        void btnSetEmergencyPressed();
+        void btnCancelEmergencyPressed();
+        void btnClearPassageCountPressed();
+        void btnSensorTestPressed();
+        void btnClearInfoPressed();
 
 private:
     Ui::ElisMainWidget *ui;
@@ -49,6 +56,8 @@ private:
     void setGLayoutLightSetting(Ui::ElisMainWidget *ui);
     void setPassengerAuthorization(Ui::ElisMainWidget *ui);
     void setGLayoutStressTest(Ui::ElisMainWidget *ui);
+    void setNormalFlashGedMode(Ui::ElisMainWidget *ui);
+    void setRightButtons(Ui::ElisMainWidget *ui);
 };
 
 

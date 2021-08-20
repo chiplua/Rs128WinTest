@@ -78,6 +78,34 @@ void ElisMainWidget::btnStopStressTestPressed() {
     ui->tbDisplayInfo->append("Stop stress test pressed");
 }
 
+void ElisMainWidget::btnGedModePressed() {
+    ui->tbDisplayInfo->append("Ged mode pressed");
+}
+
+void ElisMainWidget::btnVersionRequestPressed() {
+    ui->tbDisplayInfo->append("Version request pressed");
+}
+
+void ElisMainWidget::btnSetEmergencyPressed() {
+    ui->tbDisplayInfo->append("Set emergency pressed");
+}
+
+void ElisMainWidget::btnCancelEmergencyPressed() {
+    ui->tbDisplayInfo->append("Cancel emergency pressed");
+}
+
+void ElisMainWidget::btnClearPassageCountPressed() {
+    ui->tbDisplayInfo->append("Clear passage count pressed");
+}
+
+void ElisMainWidget::btnSensorTestPressed() {
+    ui->tbDisplayInfo->append("Sensor test pressed");
+}
+
+void ElisMainWidget::btnClearInfoPressed() {
+    ui->tbDisplayInfo->append("Clear infomation pressed");
+}
+
 void ElisMainWidget::initComboBox(Ui::ElisMainWidget *ui) {
             foreach (const QSerialPortInfo &info, QSerialPortInfo::availablePorts()) {
             qDebug() << "Name : " << info.portName();
@@ -270,28 +298,42 @@ void ElisMainWidget::setGLayoutStressTest(Ui::ElisMainWidget *ui) {
     ui->tvExitTotal->setStyleSheet("background:white");
 }
 
-void setNormalFlashGedMode(Ui::ElisMainWidget *ui) {
+void ElisMainWidget::setNormalFlashGedMode(Ui::ElisMainWidget *ui) {
     ui->verticalLayoutWidget_6->setStyleSheet("background:rgb(211, 211, 211)");
     ui->btnGedMode->setStyleSheet("background:gray");
     ui->btnGedMode->setFixedSize((ui->verticalLayoutWidget_5->width() - 30), 20);
     ui->btnGedMode->setPalette(getButtonCommonPalette());
+    connect(ui->btnGedMode, SIGNAL(clicked()), this, SLOT(btnGedModePressed()));
+
     ui->vLayoutNormalFlashGedMode->setContentsMargins(20, 0, 20, 15);
 }
 
-void setRightButtons(Ui::ElisMainWidget *ui) {
+void ElisMainWidget::setRightButtons(Ui::ElisMainWidget *ui) {
     ui->verticalLayoutWidget_7->setStyleSheet("background:rgb(211, 211, 211)");
     ui->btnVersionRequest->setStyleSheet("background:gray");
     ui->btnVersionRequest->setPalette(getButtonCommonPalette());
+    connect(ui->btnVersionRequest, SIGNAL(clicked()), this, SLOT(btnVersionRequestPressed()));
+
     ui->btnSetEmergency->setStyleSheet("background:gray");
     ui->btnSetEmergency->setPalette(getButtonCommonPalette());
+    connect(ui->btnSetEmergency, SIGNAL(clicked()), this, SLOT(btnSetEmergencyPressed()));
+
     ui->btnCancelEmergency->setStyleSheet("background:gray");
     ui->btnCancelEmergency->setPalette(getButtonCommonPalette());
+    connect(ui->btnCancelEmergency, SIGNAL(clicked()), this, SLOT(btnCancelEmergencyPressed()));
+
     ui->btnClearPassageCount->setStyleSheet("background:gray");
     ui->btnClearPassageCount->setPalette(getButtonCommonPalette());
+    connect(ui->btnClearPassageCount, SIGNAL(clicked()), this, SLOT(btnClearPassageCountPressed()));
+
     ui->btnSensortest->setStyleSheet("background:gray");
     ui->btnSensortest->setPalette(getButtonCommonPalette());
+    connect(ui->btnSensortest, SIGNAL(clicked()), this, SLOT(btnSensorTestPressed()));
+
     ui->btnClearInfo->setStyleSheet("background:gray");
     ui->btnClearInfo->setPalette(getButtonCommonPalette());
+    connect(ui->btnClearInfo, SIGNAL(clicked()), this, SLOT(btnClearInfoPressed()));
+
     ui->vLayoutRightButtons->setContentsMargins(20, 10, 20, 10);
 }
 
