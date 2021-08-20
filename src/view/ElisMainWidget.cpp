@@ -276,6 +276,7 @@ void ElisMainWidget::setVLayoutAisleMode(Ui::ElisMainWidget *ui) {
     connect(ui->btnAisleModeSetting, SIGNAL(clicked()), this, SLOT(btnAisleModeSettingPressed()));
 
     connect(ui->rbtnNormallyClosed, SIGNAL(clicked()), this, SLOT(rbtnNormallyClosedSelected()));
+    ui->rbtnNormallyClosed->setChecked(true);
     connect(ui->rbtnNormallyOpen, SIGNAL(clicked()), this, SLOT(rbtnNormallyOpenSelected()));
 
     ui->vLayoutAisleMode->setContentsMargins(20, 50, 20, 25);
@@ -318,6 +319,7 @@ void ElisMainWidget::setGLayoutLightSetting(Ui::ElisMainWidget *ui) {
     connect(ui->cbTopIndicatorLight, SIGNAL(currentIndexChanged(int)), this, SLOT(cbTopIndicatorLightChanged(int)));
 
     connect(ui->rbtnEntryDir, SIGNAL(clicked()), this, SLOT(rbtnEnTryDirSelected()));
+    ui->rbtnEntryDir->setChecked(true);
     connect(ui->rbtnExitDir, SIGNAL(clicked()), this, SLOT(rbtnExitDirSelected()));
 }
 
@@ -329,6 +331,7 @@ void ElisMainWidget::setPassengerAuthorization(Ui::ElisMainWidget *ui) {
     connect(ui->btnPassageAuthorization, SIGNAL(clicked()), this, SLOT(btnPassageAuthorizationPressed()));
 
     connect(ui->rbtnEntryAuthorized, SIGNAL(clicked()), this, SLOT(rbtnEntryAuthorizedSelected()));
+    ui->rbtnEntryAuthorized->setChecked(true);
     connect(ui->rbtnExitAuthorized, SIGNAL(clicked()), this, SLOT(rbtnExitAuthorizedSelected()));
     ui->vLayoutPassengerAuthorization->setContentsMargins(20, 0, 20, 15);
 }
@@ -366,6 +369,7 @@ void ElisMainWidget::setNormalFlashGedMode(Ui::ElisMainWidget *ui) {
     connect(ui->btnGedMode, SIGNAL(clicked()), this, SLOT(btnGedModePressed()));
 
     connect(ui->rbtnNormalMode, SIGNAL(clicked()), this, SLOT(rbtnNormalModeSelected()));
+    ui->rbtnNormalMode->setChecked(true);
     connect(ui->rbtnFlashMode, SIGNAL(clicked()), this, SLOT(rbtnFlashModeSelected()));
     ui->vLayoutNormalFlashGedMode->setContentsMargins(20, 0, 20, 15);
 }
