@@ -313,7 +313,7 @@ p, li { white-space: pre-wrap; }
      <number>0</number>
     </property>
     <item>
-     <widget class="QComboBox" name="cbExitMode"/>
+     <widget class="QComboBox" name="cbModes"/>
     </item>
     <item>
      <widget class="QPushButton" name="btnGateModeSetting">

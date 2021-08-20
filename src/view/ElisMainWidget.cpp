@@ -8,6 +8,10 @@
 #include "ElisMainWidget.h"
 #include "ui_ElisMainWidget.h"
 #include <QDebug>
+#include "ComboListContent.h"
+
+using namespace ElisView;
+
 
 QPalette getButtonCommonPalette() {
     QPalette pal;
@@ -215,8 +219,8 @@ void ElisMainWidget::setVLayoutModeSetting(Ui::ElisMainWidget *ui) {
     ui->btnGateModeSetting->setPalette(getButtonCommonPalette());
     connect(ui->btnGateModeSetting, SIGNAL(clicked()), this, SLOT(btnGateModeSettingPressed()));
 
+    ui->cbModes->addItems(ElisView::modeList);
     ui->vLayoutModeSetting->setContentsMargins(20, 40, 20, 0);
-    ui->cbExitMode->setStyleSheet("background:white");
 }
 
 void ElisMainWidget::setVLayoutAisleMode(Ui::ElisMainWidget *ui) {
@@ -239,8 +243,8 @@ void ElisMainWidget::setVLayoutTestParam(Ui::ElisMainWidget *ui) {
     ui->btnTestModule->setPalette(getButtonCommonPalette());
     connect(ui->btnTestModule, SIGNAL(clicked()), this, SLOT(btnTestModulePressed()));
 
+    ui->cbTestModule->addItems(ElisView::testsList);
     ui->vLayoutTestParam->setContentsMargins(20, 20, 20, 25);
-    ui->cbTestModule->setStyleSheet("background:white");
 }
 
 void ElisMainWidget::setGLayoutLightSetting(Ui::ElisMainWidget *ui) {
@@ -261,7 +265,7 @@ void ElisMainWidget::setGLayoutLightSetting(Ui::ElisMainWidget *ui) {
     ui->btnTopIndicatorLight->setPalette(getButtonCommonPalette());
     connect(ui->btnTopIndicatorLight, SIGNAL(clicked()), this, SLOT(btnTopIndicatorLigthPressed()));
 
-    ui->cbTopIndicatorLight->setStyleSheet("background:white");
+    ui->cbTopIndicatorLight->addItems(ElisView::lightsList);
 }
 
 void ElisMainWidget::setPassengerAuthorization(Ui::ElisMainWidget *ui) {
