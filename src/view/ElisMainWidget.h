@@ -51,6 +51,9 @@ public:
         void rbtnExitAuthorizedSelected();
         void rbtnNormalModeSelected();
         void rbtnFlashModeSelected();
+        void cbbtnGeneralConfigurationStateChanged(int state);
+        void cbbtnAllowEntryCountStateChanged(int state);
+        void cbbtnAllowExitCountStateChanged(int state);
 
 private:
     Ui::ElisMainWidget *ui;
@@ -69,6 +72,7 @@ private:
     void setGLayoutStressTest(Ui::ElisMainWidget *ui);
     void setNormalFlashGedMode(Ui::ElisMainWidget *ui);
     void setRightButtons(Ui::ElisMainWidget *ui);
+    void setVLayoutPassengersLeft(Ui::ElisMainWidget *ui);
 };
 
 

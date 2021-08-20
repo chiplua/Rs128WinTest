@@ -120,7 +120,7 @@ Timeout(1~255Sec)</string>
        </widget>
       </item>
       <item>
-       <widget class="QCheckBox" name="checkBox">
+       <widget class="QCheckBox" name="cbbtnGeneralConfiguration">
         <property name="text">
          <string>General Configuration</string>
         </property>
@@ -485,7 +485,7 @@ p, li { white-space: pre-wrap; }
      </widget>
     </item>
     <item row="0" column="2">
-     <widget class="QCheckBox" name="checkBox_2">
+     <widget class="QCheckBox" name="cbbtnAllowEntryCount">
       <property name="text">
        <string>Allow entry count</string>
       </property>
@@ -499,7 +499,7 @@ p, li { white-space: pre-wrap; }
      </widget>
     </item>
     <item row="1" column="2">
-     <widget class="QCheckBox" name="checkBox_3">
+     <widget class="QCheckBox" name="cbbtnAllowExitCount">
       <property name="text">
        <string>Allow exit count</string>
       </property>

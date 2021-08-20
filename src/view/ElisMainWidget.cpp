@@ -154,6 +154,18 @@ void ElisMainWidget::rbtnFlashModeSelected() {
     ui->tbDisplayInfo->append("Radio button flash mode selected");
 }
 
+void ElisMainWidget::cbbtnGeneralConfigurationStateChanged(int state) {
+    ui->tbDisplayInfo->append("Check box general configuration state changed: state = " + QString::fromStdString(std::to_string(state)));
+}
+
+void ElisMainWidget::cbbtnAllowEntryCountStateChanged(int state) {
+    ui->tbDisplayInfo->append("Check box allow entry count state changed: state = " + QString::fromStdString(std::to_string(state)));
+}
+
+void ElisMainWidget::cbbtnAllowExitCountStateChanged(int state) {
+    ui->tbDisplayInfo->append("Check box allow exit count state changed: state = " + QString::fromStdString(std::to_string(state)));
+}
+
 void ElisMainWidget::initComboBox(Ui::ElisMainWidget *ui) {
             foreach (const QSerialPortInfo &info, QSerialPortInfo::availablePorts()) {
             qDebug() << "Name : " << info.portName();
@@ -201,7 +213,7 @@ void ElisMainWidget::setHLayoutCom(Ui::ElisMainWidget *ui) {
     connect(ui->btnOk, SIGNAL(clicked()), this, SLOT(btnOkPressed()));
 }
 
-void setVLayoutPassengersLeft(Ui::ElisMainWidget *ui) {
+void ElisMainWidget::setVLayoutPassengersLeft(Ui::ElisMainWidget *ui) {
     ui->vLayoutPassengerLeft1->setAlignment(Qt::AlignLeft);
     ui->vLayoutPassengerLeft1->setSpacing(10);
     ui->vLayoutPassengerLeft1->setContentsMargins(5, 5, 0, 5);
@@ -221,6 +233,8 @@ void setVLayoutPassengersLeft(Ui::ElisMainWidget *ui) {
     ui->tvPassengerAuthorizationTimeout->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->tvPassengerAuthorizationTimeout->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->tvPassengerAuthorizationTimeout->setStyleSheet("background:white");
+
+    connect(ui->cbbtnGeneralConfiguration, SIGNAL(stateChanged(int)), this, SLOT(cbbtnGeneralConfigurationStateChanged(int)));
 }
 
 void ElisMainWidget::setVLayoutPassengersRight(Ui::ElisMainWidget *ui) {
@@ -359,6 +373,9 @@ void ElisMainWidget::setGLayoutStressTest(Ui::ElisMainWidget *ui) {
     ui->tvExitTotal->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->tvExitTotal->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->tvExitTotal->setStyleSheet("background:white");
+
+    connect(ui->cbbtnAllowEntryCount, SIGNAL(stateChanged(int)), this, SLOT(cbbtnAllowEntryCountStateChanged(int)));
+    connect(ui->cbbtnAllowExitCount, SIGNAL(stateChanged(int)), this, SLOT(cbbtnAllowExitCountStateChanged(int)));
 }
 
 void ElisMainWidget::setNormalFlashGedMode(Ui::ElisMainWidget *ui) {
