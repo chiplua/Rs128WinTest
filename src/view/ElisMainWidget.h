@@ -43,6 +43,14 @@ public:
         void cbModesChanged(int index);
         void cbTestModuleChanged(int index);
         void cbTopIndicatorLightChanged(int index);
+        void rbtnEnTryDirSelected();
+        void rbtnExitDirSelected();
+        void rbtnNormallyClosedSelected();
+        void rbtnNormallyOpenSelected();
+        void rbtnEntryAuthorizedSelected();
+        void rbtnExitAuthorizedSelected();
+        void rbtnNormalModeSelected();
+        void rbtnFlashModeSelected();
 
 private:
     Ui::ElisMainWidget *ui;

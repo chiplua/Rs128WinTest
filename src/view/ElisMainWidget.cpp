@@ -122,6 +122,38 @@ void ElisMainWidget::cbTopIndicatorLightChanged(int index) {
     ui->tbDisplayInfo->append("ComboBox top indicator light changed");
 }
 
+void ElisMainWidget::rbtnEnTryDirSelected() {
+    ui->tbDisplayInfo->append("Radio button entry dir selected");
+}
+
+void ElisMainWidget::rbtnExitDirSelected() {
+    ui->tbDisplayInfo->append("Radio button exit dir selected");
+}
+
+void ElisMainWidget::rbtnNormallyClosedSelected() {
+    ui->tbDisplayInfo->append("Radio button normally clossed selected");
+}
+
+void ElisMainWidget::rbtnNormallyOpenSelected() {
+    ui->tbDisplayInfo->append("Radio button normally open selected");
+}
+
+void ElisMainWidget::rbtnEntryAuthorizedSelected() {
+    ui->tbDisplayInfo->append("Radio button exit authorizaed selected");
+}
+
+void ElisMainWidget::rbtnExitAuthorizedSelected() {
+    ui->tbDisplayInfo->append("Radio button exit authorizaed selected");
+}
+
+void ElisMainWidget::rbtnNormalModeSelected() {
+    ui->tbDisplayInfo->append("Radio button normal mode selected");
+}
+
+void ElisMainWidget::rbtnFlashModeSelected() {
+    ui->tbDisplayInfo->append("Radio button flash mode selected");
+}
+
 void ElisMainWidget::initComboBox(Ui::ElisMainWidget *ui) {
             foreach (const QSerialPortInfo &info, QSerialPortInfo::availablePorts()) {
             qDebug() << "Name : " << info.portName();
@@ -243,6 +275,9 @@ void ElisMainWidget::setVLayoutAisleMode(Ui::ElisMainWidget *ui) {
     ui->btnAisleModeSetting->setPalette(getButtonCommonPalette());
     connect(ui->btnAisleModeSetting, SIGNAL(clicked()), this, SLOT(btnAisleModeSettingPressed()));
 
+    connect(ui->rbtnNormallyClosed, SIGNAL(clicked()), this, SLOT(rbtnNormallyClosedSelected()));
+    connect(ui->rbtnNormallyOpen, SIGNAL(clicked()), this, SLOT(rbtnNormallyOpenSelected()));
+
     ui->vLayoutAisleMode->setContentsMargins(20, 50, 20, 25);
 }
 
@@ -281,6 +316,9 @@ void ElisMainWidget::setGLayoutLightSetting(Ui::ElisMainWidget *ui) {
 
     ui->cbTopIndicatorLight->addItems(ElisView::lightsList);
     connect(ui->cbTopIndicatorLight, SIGNAL(currentIndexChanged(int)), this, SLOT(cbTopIndicatorLightChanged(int)));
+
+    connect(ui->rbtnEntryDir, SIGNAL(clicked()), this, SLOT(rbtnEnTryDirSelected()));
+    connect(ui->rbtnExitDir, SIGNAL(clicked()), this, SLOT(rbtnExitDirSelected()));
 }
 
 void ElisMainWidget::setPassengerAuthorization(Ui::ElisMainWidget *ui) {
@@ -289,6 +327,9 @@ void ElisMainWidget::setPassengerAuthorization(Ui::ElisMainWidget *ui) {
     ui->btnPassageAuthorization->setFixedSize((ui->verticalLayoutWidget_5->width() - 30), 20);
     ui->btnPassageAuthorization->setPalette(getButtonCommonPalette());
     connect(ui->btnPassageAuthorization, SIGNAL(clicked()), this, SLOT(btnPassageAuthorizationPressed()));
+
+    connect(ui->rbtnEntryAuthorized, SIGNAL(clicked()), this, SLOT(rbtnEntryAuthorizedSelected()));
+    connect(ui->rbtnExitAuthorized, SIGNAL(clicked()), this, SLOT(rbtnExitAuthorizedSelected()));
     ui->vLayoutPassengerAuthorization->setContentsMargins(20, 0, 20, 15);
 }
 
@@ -324,6 +365,8 @@ void ElisMainWidget::setNormalFlashGedMode(Ui::ElisMainWidget *ui) {
     ui->btnGedMode->setPalette(getButtonCommonPalette());
     connect(ui->btnGedMode, SIGNAL(clicked()), this, SLOT(btnGedModePressed()));
 
+    connect(ui->rbtnNormalMode, SIGNAL(clicked()), this, SLOT(rbtnNormalModeSelected()));
+    connect(ui->rbtnFlashMode, SIGNAL(clicked()), this, SLOT(rbtnFlashModeSelected()));
     ui->vLayoutNormalFlashGedMode->setContentsMargins(20, 0, 20, 15);
 }
 

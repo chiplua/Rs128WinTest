@@ -271,14 +271,14 @@ p, li { white-space: pre-wrap; }
      <number>0</number>
     </property>
     <item>
-     <widget class="QRadioButton" name="radioButton">
+     <widget class="QRadioButton" name="rbtnNormallyClosed">
       <property name="text">
        <string>Normally Closed</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QRadioButton" name="radioButton_2">
+     <widget class="QRadioButton" name="rbtnNormallyOpen">
       <property name="text">
        <string>Normally Open</string>
       </property>
@@ -416,7 +416,7 @@ p, li { white-space: pre-wrap; }
      </widget>
     </item>
     <item row="1" column="2">
-     <widget class="QRadioButton" name="radioButton_4">
+     <widget class="QRadioButton" name="rbtnExitDir">
       <property name="text">
        <string>Exit Dir.</string>
       </property>
@@ -441,7 +441,7 @@ p, li { white-space: pre-wrap; }
      </widget>
     </item>
     <item row="0" column="2">
-     <widget class="QRadioButton" name="radioButton_3">
+     <widget class="QRadioButton" name="rbtnEntryDir">
       <property name="text">
        <string>Entry Dir.</string>
       </property>
@@ -564,14 +564,14 @@ p, li { white-space: pre-wrap; }
    </property>
    <layout class="QVBoxLayout" name="vLayoutPassengerAuthorization">
     <item>
-     <widget class="QRadioButton" name="radioButton_5">
+     <widget class="QRadioButton" name="rbtnEntryAuthorized">
       <property name="text">
        <string>Entry Authorized</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QRadioButton" name="radioButton_6">
+     <widget class="QRadioButton" name="rbtnExitAuthorized">
       <property name="text">
        <string>Exit Authorized</string>
       </property>
@@ -597,14 +597,14 @@ p, li { white-space: pre-wrap; }
    </property>
    <layout class="QVBoxLayout" name="vLayoutNormalFlashGedMode">
     <item>
-     <widget class="QRadioButton" name="radioButton_7">
+     <widget class="QRadioButton" name="rbtnNormalMode">
       <property name="text">
        <string>Normal Mode</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QRadioButton" name="radioButton_8">
+     <widget class="QRadioButton" name="rbtnFlashMode">
       <property name="text">
        <string>Flash Mode</string>
       </property>
