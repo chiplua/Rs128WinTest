@@ -40,6 +40,9 @@ public:
         void btnClearPassageCountPressed();
         void btnSensorTestPressed();
         void btnClearInfoPressed();
+        void cbModesChanged(int index);
+        void cbTestModuleChanged(int index);
+        void cbTopIndicatorLightChanged(int index);
 
 private:
     Ui::ElisMainWidget *ui;

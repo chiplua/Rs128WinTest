@@ -20,20 +20,6 @@ QPalette getButtonCommonPalette() {
     return pal;
 }
 
-void ElisMainWidget::cbComListChanged(int i) {
-    qDebug() << "cbComListChanged: i = %d, strList = %s" << i;
-    serialPortName = serialPortsNames.at(i);
-    qDebug() << "You select serial port %s " << serialPortName;
-    bool isOpendSuccess = serialPort.openPort(serialPortName);
-    qDebug() << serialPortName << " opened " << isOpendSuccess;
-
-    if (isOpendSuccess) {
-        ui->tbDisplayInfo->append(serialPortName + " open success");
-    } else {
-        ui->tbDisplayInfo->append(serialPortName + " open fail");
-    }
-}
-
 void ElisMainWidget::btnOpenComClicked() {
     ui->tbDisplayInfo->append("Open the com port pressed");
 }
@@ -108,6 +94,32 @@ void ElisMainWidget::btnSensorTestPressed() {
 
 void ElisMainWidget::btnClearInfoPressed() {
     ui->tbDisplayInfo->append("Clear infomation pressed");
+}
+
+void ElisMainWidget::cbComListChanged(int i) {
+    qDebug() << "cbComListChanged: i = %d, strList = %s" << i;
+    serialPortName = serialPortsNames.at(i);
+    qDebug() << "You select serial port %s " << serialPortName;
+    bool isOpendSuccess = serialPort.openPort(serialPortName);
+    qDebug() << serialPortName << " opened " << isOpendSuccess;
+
+    if (isOpendSuccess) {
+        ui->tbDisplayInfo->append(serialPortName + " open success");
+    } else {
+        ui->tbDisplayInfo->append(serialPortName + " open fail");
+    }
+}
+
+void ElisMainWidget::cbModesChanged(int index) {
+    ui->tbDisplayInfo->append("ComboBox modes changed");
+}
+
+void ElisMainWidget::cbTestModuleChanged(int index) {
+    ui->tbDisplayInfo->append("ComboBox test module changed");
+}
+
+void ElisMainWidget::cbTopIndicatorLightChanged(int index) {
+    ui->tbDisplayInfo->append("ComboBox top indicator light changed");
 }
 
 void ElisMainWidget::initComboBox(Ui::ElisMainWidget *ui) {
@@ -220,6 +232,7 @@ void ElisMainWidget::setVLayoutModeSetting(Ui::ElisMainWidget *ui) {
     connect(ui->btnGateModeSetting, SIGNAL(clicked()), this, SLOT(btnGateModeSettingPressed()));
 
     ui->cbModes->addItems(ElisView::modeList);
+    connect(ui->cbModes, SIGNAL(currentIndexChanged(int)), this, SLOT(cbModesChanged(int)));
     ui->vLayoutModeSetting->setContentsMargins(20, 40, 20, 0);
 }
 
@@ -244,6 +257,7 @@ void ElisMainWidget::setVLayoutTestParam(Ui::ElisMainWidget *ui) {
     connect(ui->btnTestModule, SIGNAL(clicked()), this, SLOT(btnTestModulePressed()));
 
     ui->cbTestModule->addItems(ElisView::testsList);
+    connect(ui->cbTestModule, SIGNAL(currentIndexChanged(int)), this, SLOT(cbTestModuleChanged(int)));
     ui->vLayoutTestParam->setContentsMargins(20, 20, 20, 25);
 }
 
@@ -266,6 +280,7 @@ void ElisMainWidget::setGLayoutLightSetting(Ui::ElisMainWidget *ui) {
     connect(ui->btnTopIndicatorLight, SIGNAL(clicked()), this, SLOT(btnTopIndicatorLigthPressed()));
 
     ui->cbTopIndicatorLight->addItems(ElisView::lightsList);
+    connect(ui->cbTopIndicatorLight, SIGNAL(currentIndexChanged(int)), this, SLOT(cbTopIndicatorLightChanged(int)));
 }
 
 void ElisMainWidget::setPassengerAuthorization(Ui::ElisMainWidget *ui) {
