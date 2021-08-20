@@ -9,9 +9,12 @@
 #include "ui_ElisMainWidget.h"
 #include <QDebug>
 #include "ComboListContent.h"
+#include "../elisserial/parsedata/PackagingAndUnpacking.h"
+#include "../utils/StringUtils.h"
 
 using namespace ElisView;
-
+using namespace ElisSerial;
+using namespace ElisTool;
 
 QPalette getButtonCommonPalette() {
     QPalette pal;
@@ -30,6 +33,11 @@ void ElisMainWidget::btnCloseComClicked() {
 
 void ElisMainWidget::btnCurrentStatusRequestPressed() {
     ui->tbDisplayInfo->append("Current status request button pressed");
+    char currentStatusRequestCommand[2] = {0x08, 0x23};
+    char *backArray = ElisSerial::PackagingAndUnpacking::toPrimitives(currentStatusRequestCommand, 2);
+    char s[4];
+    StringUtils::hexToAscii(s, backArray, 4);
+    ui->tbDisplayInfo->append(QString::fromStdString(s));
 }
 
 void ElisMainWidget::btnOkPressed() {

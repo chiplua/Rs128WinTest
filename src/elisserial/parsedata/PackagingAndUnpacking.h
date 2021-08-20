@@ -1,0 +1,33 @@
+//
+// Created by chiplua on 2021/8/20.
+//
+
+#ifndef ELISRS128WINTEST_PACKAGINGANDUNPACKING_H
+#define ELISRS128WINTEST_PACKAGINGANDUNPACKING_H
+
+namespace ElisSerial {
+    class PackagingAndUnpacking {
+    public:
+        static char* toPrimitives(char oBytes[], int arraySize);
+    };
+}
+#endif //ELISRS128WINTEST_PACKAGINGANDUNPACKING_H
+/*
+        static char[] requestClientRadarStartScan(int conversationId, CommandModel commandModel);
+        static char[] requestClientRadarStopScan(short conversationId, CommandModel commandModel);
+        static char[] requestClientStartDesinfection(short conversationId, int minutes, CommandModel commandModel);
+        static char[] requestClientStopDesinfection(short conversationId, int minutes, CommandModel commandModel);
+        static char[] requestClientVersions(short conversationId, CommandModel commandModel);
+        static char[] requestClientStatus(short conversationId, CommandModel commandModel);
+        static char[] requestClientStartPilotLed(short conversationId, CommandModel commandModel);
+        static char[] requestClientStopPilotLed(short conversationId, CommandModel commandModel);
+        static char[] responseClientSomeBodyIn(short conversationId, byte resultCode, CommandModel commandModel);
+        static char[] requestClientUpdateFirmware(short conversationId, CommandModel commandModel, byte board, byte number);
+        static char[] requestClientSendFirmwareLength(short conversationId, CommandModel commandModel, byte board, byte number, int length);
+        static char[] requestClientSendFirmwareData(short conversationId, CommandModel commandModel, byte board, byte number, byte[] data);
+        static char[] requestClientSendFirmwareOver(short conversationId, CommandModel commandModel, byte board, byte number);
+        static char[] requestClientBootloader2Mainboard(short conversationId, CommandModel commandModel, byte board, byte number);
+        static char[] packageCommand(byte[] commandDataArray, CommandModel commandModel);
+        static char[] convertArrayToSend(byte[] originArray, CommandModel commandModel);
+        static char[] convertReceivedArray(byte[] originArray);
+*/

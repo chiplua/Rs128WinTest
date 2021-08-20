@@ -6,7 +6,7 @@
 #define ELISRS128WINTEST_ELISMAINWIDGET_H
 
 #include <QWidget>
-#include "../serialport/SerialPort.h"
+#include "../elisserial/serialport/SerialPort.h"
 
 using namespace ElisSerial;
 QT_BEGIN_NAMESPACE
