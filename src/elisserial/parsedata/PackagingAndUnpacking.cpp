@@ -95,4 +95,21 @@ namespace ElisSerial {
         return destVector;
     }
 
+    std::vector<unsigned char> PackagingAndUnpacking::packageCommand(unsigned char commandDataArray[], int arraySize) {
+        std::vector<unsigned char> commandOriginVect;
+        commandOriginVect.push_back(arraySize);
+
+        unsigned char bcc = arraySize;
+        for (int i = 0; i < arraySize; i++) {
+            commandOriginVect.push_back(commandDataArray[i]);
+            bcc = bcc ^ commandDataArray[i];
+        }
+
+        commandOriginVect.push_back(bcc);
+
+        unsigned char commandOriginArray[commandOriginVect.size()];
+        return convertArrayToSend(std::copy(commandOriginVect.begin(), commandOriginVect.end(), commandOriginArray), commandOriginVect.size());
+    }
+
+
 }

@@ -14,6 +14,7 @@ namespace ElisSerial {
         static std::vector<unsigned char> toPrimitives(unsigned char oBytes[], int arraySize);
         static std::vector<unsigned char> convertReceivedArray(unsigned char originArray[], int arraySize);
         static std::vector<unsigned char> convertArrayToSend(unsigned char originArray[], int arraySize);
+        static std::vector<unsigned char> packageCommand(unsigned char commandDataArray[], int arraySize);
     };
 }
 #endif //ELISRS128WINTEST_PACKAGINGANDUNPACKING_H
