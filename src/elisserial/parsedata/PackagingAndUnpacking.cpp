@@ -74,4 +74,25 @@ namespace ElisSerial {
         return destVector;
     }
 
+    std::vector<unsigned char> PackagingAndUnpacking::convertArrayToSend(unsigned char originArray[], int arraySize) {
+        std::vector<unsigned char> destVector;
+
+        for (int i = 0; i < arraySize; i++) {
+            if (originArray[i] == 0x02) {
+                destVector.push_back(0x10);
+                destVector.push_back(0x02);
+            } else if (originArray[i] == 0x03) {
+                destVector.push_back(0x10);
+                destVector.push_back(0x03);
+            } else if (originArray[i] == 0x10) {
+                destVector.push_back(0x10);
+                destVector.push_back(0x10);
+            } else {
+                destVector.push_back(originArray[i]);
+            }
+        }
+
+        return destVector;
+    }
+
 }
