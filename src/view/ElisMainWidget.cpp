@@ -103,7 +103,7 @@ void ElisMainWidget::btnSensorTestPressed() {
 }
 
 void ElisMainWidget::btnClearInfoPressed() {
-    ui->tbDisplayInfo->append("Clear infomation pressed");
+    ui->tbDisplayInfo->clear();
 }
 
 void ElisMainWidget::cbComListChanged(int i) {
