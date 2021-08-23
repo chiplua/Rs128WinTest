@@ -7,8 +7,12 @@
 
 namespace ElisSerial {
     class PackagingAndUnpacking {
+    private:
+        static const int BEGIN_COMMAND_BYTE = 0x02;
+        static const int END_COMMAND_BYTE = 0x03;
     public:
         static std::vector<unsigned char> toPrimitives(unsigned char oBytes[], int arraySize);
+        static std::vector<unsigned char> convertReceivedArray(unsigned char originArray[], int arraySize);
     };
 }
 #endif //ELISRS128WINTEST_PACKAGINGANDUNPACKING_H

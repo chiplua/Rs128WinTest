@@ -39,4 +39,39 @@ namespace ElisSerial {
 
         return bytes;
     }
+
+    std::vector<unsigned char> PackagingAndUnpacking::convertReceivedArray(unsigned char originArray[], int arraySize) {
+        std::vector<unsigned char> recvVect;
+
+        if (originArray[0] != PackagingAndUnpacking::BEGIN_COMMAND_BYTE ||
+            originArray[arraySize - 1] != PackagingAndUnpacking::END_COMMAND_BYTE) {
+            return {};
+        }
+
+        for (int i = 1; i < arraySize - 1; i++) {
+            if (originArray[i] == 0x10 && originArray[i + 1] == 0x02) {
+                recvVect.push_back(originArray[i + 1]);
+                i++;
+            } else if (originArray[i] == 0x10 && originArray[i + 1] == 0x03 && (i + 1) != (arraySize - 1)) {
+                recvVect.push_back(originArray[i + 1]);
+                i++;
+            } else if (originArray[i] == 0x10 && originArray[i + 1] == 0x10) {
+                recvVect.push_back(originArray[i + 1]);
+                i++;
+            } else {
+                recvVect.push_back(originArray[i]);
+            }
+        }
+
+        unsigned char destArray[recvVect.size()];
+        std::vector<unsigned char> destVector = toPrimitives(std::copy(recvVect.begin(), recvVect.end(), destArray), recvVect.size());
+        unsigned char bcc = destVector.size();
+
+        for (int i = 1; i < destVector.size(); i++) {
+            bcc = (bcc ^ destVector[i]);
+        }
+
+        return destVector;
+    }
+
 }
