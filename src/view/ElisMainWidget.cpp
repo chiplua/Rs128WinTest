@@ -79,6 +79,12 @@ void ElisMainWidget::btnGateModeSettingPressed() {
 
 void ElisMainWidget::btnAisleModeSettingPressed() {
     ui->tbDisplayInfo->append("Aisle mode setting pressed");
+    //02 10 03 10 03 07 01 06 03
+    std::vector<unsigned char> aisleModeVect = PackagingAndUnpacking::requestSetAisleMode(0x03, 0x02);
+    unsigned char aisleModeArray[aisleModeVect.size()];
+    std::copy(aisleModeVect.begin(), aisleModeVect.end(), aisleModeArray);
+    QByteArray qa = QByteArray::fromRawData(reinterpret_cast<char*>(aisleModeArray), aisleModeVect.size());
+    serialPort.write(qa);
 }
 
 void ElisMainWidget::btnTestModulePressed() {

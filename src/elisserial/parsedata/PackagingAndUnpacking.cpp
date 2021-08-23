@@ -157,4 +157,9 @@ namespace ElisSerial {
         return packageCommand(setGateModeCommand, 3);
     }
 
+    std::vector<unsigned char> PackagingAndUnpacking::requestSetAisleMode(unsigned char conversationId, unsigned char aisleMode) {
+        unsigned char setAisleModeCommand[3] = {0x03, conversationId, aisleMode};
+
+        return packageCommand(setAisleModeCommand, 3);
+    }
 }
