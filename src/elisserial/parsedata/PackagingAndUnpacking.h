@@ -8,7 +8,7 @@
 namespace ElisSerial {
     class PackagingAndUnpacking {
     public:
-        static char* toPrimitives(char oBytes[], int arraySize);
+        static std::vector<unsigned char> toPrimitives(unsigned char oBytes[], int arraySize);
     };
 }
 #endif //ELISRS128WINTEST_PACKAGINGANDUNPACKING_H

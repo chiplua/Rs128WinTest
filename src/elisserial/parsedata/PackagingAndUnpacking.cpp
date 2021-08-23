@@ -26,15 +26,16 @@
 #include "PackagingAndUnpacking.h"
 
 namespace ElisSerial {
-    char* PackagingAndUnpacking::toPrimitives(char oBytes[], int arraySize) {
-        char bytes[arraySize + 2];
+    std::vector<unsigned char> PackagingAndUnpacking::toPrimitives(unsigned char oBytes[], int arraySize) {
+        std::vector<unsigned char> bytes;
 
-        bytes[0] = 0x02;
-        bytes[arraySize + 1] = 0x03;
+        bytes.push_back(0x02);
 
         for(int i = 0; i < arraySize; i++) {
-            bytes[i + 1] = oBytes[i];
+            bytes.push_back(oBytes[i]);
         }
+
+        bytes.push_back(0x03);
 
         return bytes;
     }

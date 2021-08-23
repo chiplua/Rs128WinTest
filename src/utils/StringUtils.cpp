@@ -6,6 +6,9 @@
 #include<iostream>
 #include <vector>
 #include "StringUtils.h"
+#include <iostream>
+#include <cstring>
+#include <string>
 using namespace std;
 
 namespace ElisTool {
@@ -85,22 +88,17 @@ namespace ElisTool {
         return result;
     }
 
-    void StringUtils::hexToAscii(void* destBuf, void* srcBuf, int srcLen) {
-        if ((destBuf == NULL) || (srcBuf == NULL)) {
-            return;
+    std::string StringUtils::vec2String(std::vector<unsigned char> res) {
+        string ret;
+
+        for (int i = 0; i < res.size(); i++) {
+            char str[4];
+            sprintf(str, "%02X", res[i]);
+            ret += str;
+            ret += " ";
         }
 
-        unsigned char* dest = (unsigned char *) destBuf;
-        unsigned char* src = (unsigned char *) srcBuf;
-        int destPos = srcLen << 1;
-        int srcPos = srcLen;
-
-        while (--srcPos >= 0) {
-            unsigned char hiHalf = src[srcPos] >> 4;
-            unsigned char loHalf = src[srcPos] & 0x0F;
-            dest[--destPos] = (loHalf <= 9) ? (loHalf + '0') : (loHalf + 55);
-            dest[--destPos] = (hiHalf <= 9) ? (hiHalf + '0') : (hiHalf + 55);
-        }
+        return ret;
     }
 };
 

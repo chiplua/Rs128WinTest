@@ -14,7 +14,7 @@ namespace ElisTool {
         static std::string replaceAll2(std::string strSource);
         static std::vector<std::string> splitString(std::string str, std::string pattern);
         static std::string intArray2String(int *pArray, int size);
-        static void hexToAscii(void* destBuf, void* srcBuf, int srcLen);
+        static std::string vec2String(std::vector<unsigned char> res);
     };
 }
 #endif //ELISSGPGATECPP_STRINGUTILS_H
