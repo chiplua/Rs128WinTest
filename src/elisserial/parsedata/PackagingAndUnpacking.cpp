@@ -92,7 +92,10 @@ namespace ElisSerial {
             }
         }
 
-        return destVector;
+        unsigned char destArray[destVector.size()];
+        std::copy(destVector.begin(), destVector.end(), destArray);
+
+        return toPrimitives(destArray, destVector.size());
     }
 
     std::vector<unsigned char> PackagingAndUnpacking::packageCommand(unsigned char commandDataArray[], int arraySize) {
@@ -108,8 +111,13 @@ namespace ElisSerial {
         commandOriginVect.push_back(bcc);
 
         unsigned char commandOriginArray[commandOriginVect.size()];
-        return convertArrayToSend(std::copy(commandOriginVect.begin(), commandOriginVect.end(), commandOriginArray), commandOriginVect.size());
+        std::copy(commandOriginVect.begin(), commandOriginVect.end(), commandOriginArray);
+        return convertArrayToSend(commandOriginArray, commandOriginVect.size());
     }
 
+    std::vector<unsigned char> PackagingAndUnpacking::requestVersion(unsigned char conversationId) {
+        unsigned char versionCommand[2] = {0x08, conversationId};
 
+        return packageCommand(versionCommand, 2);
+    }
 }

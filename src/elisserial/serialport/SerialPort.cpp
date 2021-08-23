@@ -8,7 +8,7 @@
 
 namespace ElisSerial {
     SerialPort::SerialPort() {
-        this->setBaudRate(BaudRate::Baud2400, QSerialPort::AllDirections);
+        this->setBaudRate(BaudRate::Baud57600, QSerialPort::AllDirections);
         this->setDataBits(QSerialPort::Data8);
         this->setFlowControl(QSerialPort::NoFlowControl);
         this->setStopBits(QSerialPort::OneStop);

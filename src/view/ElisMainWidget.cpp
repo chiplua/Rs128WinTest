@@ -33,11 +33,13 @@ void ElisMainWidget::btnCloseComClicked() {
 
 void ElisMainWidget::btnCurrentStatusRequestPressed() {
     ui->tbDisplayInfo->append("Current status request button pressed");
-    unsigned char currentStatusRequestCommand[5] = {0x08, 0x23, 0x32, 0x45, 0x99};
-    std::vector<unsigned char> backArray = ElisSerial::PackagingAndUnpacking::toPrimitives(currentStatusRequestCommand, 5);
-
-    std::string str = StringUtils::vec2String(backArray);
-    ui->tbDisplayInfo->append(QString::fromStdString(str));
+    std::vector<unsigned char> versionVect = PackagingAndUnpacking::requestVersion(0);
+    unsigned char versionArray[versionVect.size()];
+    std::copy(versionVect.begin(), versionVect.end(), versionArray);
+    QByteArray qa = QByteArray::fromRawData(reinterpret_cast<char*>(versionArray), versionVect.size());
+    //QByteArray qa((char *)versionArray, versionVect.size());
+    //qDebug() << qa << qa.toHex() << qa.size();
+    serialPort.write(qa);
 }
 
 void ElisMainWidget::btnOkPressed() {
