@@ -120,4 +120,35 @@ namespace ElisSerial {
 
         return packageCommand(versionCommand, 2);
     }
+
+    std::vector<unsigned char> PackagingAndUnpacking::requestConfigParameters(unsigned char conversationId,
+                                                                              unsigned char generalConfiguration,
+                                                                              unsigned char maxPassageAuthorization,
+                                                                              unsigned char flapClosingTo,
+                                                                              unsigned char passageAuthorizationTo,
+                                                                              unsigned char sensorTo,
+                                                                              unsigned char leaveAisleTo,
+                                                                              unsigned char openSafetyTo,
+                                                                              unsigned char reserve1,
+                                                                              unsigned char reserve2,
+                                                                              unsigned char reserve3,
+                                                                              unsigned char reserve4) {
+        unsigned char configurationCommand[13] = {0x01,
+                                                conversationId,
+                                                generalConfiguration,
+                                                maxPassageAuthorization,
+                                                flapClosingTo,
+                                                passageAuthorizationTo,
+                                                sensorTo,
+                                                leaveAisleTo,
+                                                openSafetyTo,
+                                                reserve1,
+                                                reserve2,
+                                                reserve3,
+                                                reserve4};
+
+
+        return packageCommand(configurationCommand, 13);
+    }
+
 }

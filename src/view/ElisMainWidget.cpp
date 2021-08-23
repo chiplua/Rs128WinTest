@@ -48,6 +48,23 @@ void ElisMainWidget::btnOkPressed() {
 
 void ElisMainWidget::btnParamterSettingPressed() {
     ui->tbDisplayInfo->append("Parameter setting pressed");
+    //02 0D 01 05 00 10 02 00 1E 3C 10 03 01 00 00 00 00 2B 03
+    std::vector<unsigned char> parametersVect = PackagingAndUnpacking::requestConfigParameters(0x01,
+                                                                                               0x00,
+                                                                                               0x02,
+                                                                                               0x00,
+                                                                                               0x1E,
+                                                                                               0x3c,
+                                                                                               0x03,
+                                                                                               0x01,
+                                                                                               0x00,
+                                                                                               0x00,
+                                                                                               0x00,
+                                                                                               0x00);
+    unsigned char parametersArray[parametersVect.size()];
+    std::copy(parametersVect.begin(), parametersVect.end(), parametersArray);
+    QByteArray qa = QByteArray::fromRawData(reinterpret_cast<char*>(parametersArray), parametersVect.size());
+    serialPort.write(qa);
 }
 
 void ElisMainWidget::btnGateModeSettingPressed() {

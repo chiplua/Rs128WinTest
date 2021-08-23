@@ -16,6 +16,18 @@ namespace ElisSerial {
         static std::vector<unsigned char> convertArrayToSend(unsigned char originArray[], int arraySize);
         static std::vector<unsigned char> packageCommand(unsigned char commandDataArray[], int arraySize);
         static std::vector<unsigned char> requestVersion(unsigned char conversationId);
+        static std::vector<unsigned char> requestConfigParameters(unsigned char conversationId,
+                                                                  unsigned char generalConfiguration,
+                                                                  unsigned char maxPassageAuthorization,
+                                                                  unsigned char flapClosingTo,
+                                                                  unsigned char passageAuthorizationTo,
+                                                                  unsigned char sensorTo,
+                                                                  unsigned char leaveAisleTo,
+                                                                  unsigned char openSafetyTo,
+                                                                  unsigned char reserve1,
+                                                                  unsigned char reserve2,
+                                                                  unsigned char reserve3,
+                                                                  unsigned char reserve4);
     };
 }
 #endif //ELISRS128WINTEST_PACKAGINGANDUNPACKING_H
