@@ -28,6 +28,7 @@ namespace ElisSerial {
                                                                   unsigned char reserve2,
                                                                   unsigned char reserve3,
                                                                   unsigned char reserve4);
+        static std::vector<unsigned char> requestSetGateMode(unsigned char conversationId, unsigned char gateMode);
     };
 }
 #endif //ELISRS128WINTEST_PACKAGINGANDUNPACKING_H

@@ -151,4 +151,10 @@ namespace ElisSerial {
         return packageCommand(configurationCommand, 13);
     }
 
+    std::vector<unsigned char> PackagingAndUnpacking::requestSetGateMode(unsigned char conversationId, unsigned char gateMode) {
+        unsigned char setGateModeCommand[3] = {0x02, conversationId, gateMode};
+
+        return packageCommand(setGateModeCommand, 3);
+    }
+
 }

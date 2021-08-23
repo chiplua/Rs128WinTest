@@ -69,6 +69,12 @@ void ElisMainWidget::btnParamterSettingPressed() {
 
 void ElisMainWidget::btnGateModeSettingPressed() {
     ui->tbDisplayInfo->append("Gate mode setting pressed");
+    //02 10 03 10 02 06 04 10 03 03 error
+    std::vector<unsigned char> gateModeVect = PackagingAndUnpacking::requestSetGateMode(0x02, 0x02);
+    unsigned char gateModeArray[gateModeVect.size()];
+    std::copy(gateModeVect.begin(), gateModeVect.end(), gateModeArray);
+    QByteArray qa = QByteArray::fromRawData(reinterpret_cast<char*>(gateModeArray), gateModeVect.size());
+    serialPort.write(qa);
 }
 
 void ElisMainWidget::btnAisleModeSettingPressed() {
