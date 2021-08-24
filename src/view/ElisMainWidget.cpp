@@ -11,6 +11,7 @@
 #include "ComboListContent.h"
 #include "../elisserial/parsedata/PackagingAndUnpacking.h"
 #include "../utils/StringUtils.h"
+#include "ElisSensorTestWidget.h"
 
 using namespace ElisView;
 using namespace ElisSerial;
@@ -200,6 +201,8 @@ void ElisMainWidget::btnClearPassageCountPressed() {
 
 void ElisMainWidget::btnSensorTestPressed() {
     ui->tbDisplayInfo->append("Sensor test pressed");
+    ElisSensorTestWidget *sensorTestWidget = new ElisSensorTestWidget();
+    sensorTestWidget->show();
 }
 
 void ElisMainWidget::btnClearInfoPressed() {
