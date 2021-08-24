@@ -51,6 +51,8 @@ void ElisMainWidget::btnCurrentStatusRequestPressed() {
 
 void ElisMainWidget::btnOkPressed() {
     ui->tbDisplayInfo->append("Ok button pressed");
+    QApplication *app;
+    app->quit();
 }
 
 void ElisMainWidget::btnParamterSettingPressed() {
