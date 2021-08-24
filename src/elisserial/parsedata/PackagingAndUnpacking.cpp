@@ -189,4 +189,10 @@ namespace ElisSerial {
 
         return packageCommand(statusCommand, 2);
     }
+
+    std::vector<unsigned char> PackagingAndUnpacking::requestClearPasssageCount(unsigned char conversationId, unsigned char data) {
+        unsigned char clearPassageCountCommand[3] = {0x0B, conversationId, data};
+
+        return packageCommand(clearPassageCountCommand, 3);
+    }
 }

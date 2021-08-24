@@ -180,6 +180,14 @@ void ElisMainWidget::btnCancelEmergencyPressed() {
 
 void ElisMainWidget::btnClearPassageCountPressed() {
     ui->tbDisplayInfo->append("Clear passage count pressed");
+    //02 10 03 0b 0b 00 10 03 03
+    std::vector<unsigned char> clearPassageCountVect = PackagingAndUnpacking::requestClearPasssageCount(0x0B, 0x00);
+
+    QByteArray qba;
+    unsigned char array[clearPassageCountVect.size()];
+    vector2QByteArray(clearPassageCountVect, array, &qba);
+
+    serialPort.write(qba);
 }
 
 void ElisMainWidget::btnSensorTestPressed() {
