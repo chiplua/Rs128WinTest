@@ -201,4 +201,16 @@ namespace ElisSerial {
 
         return packageCommand(setGedModeCommand, 3);
     }
+
+    std::vector<unsigned char> PackagingAndUnpacking::requestTestSensor(unsigned char conversationId, unsigned char action, unsigned char testData) {
+        unsigned char sensorsTestCommand[5] = {0x05, conversationId, 0x02, testData};
+
+        return packageCommand(sensorsTestCommand, 4);
+    }
+
+    std::vector<unsigned char> PackagingAndUnpacking::requestStopCurrentTest(unsigned char conversationId, unsigned char testData) {
+        unsigned char cancelCurrentTestCommand[4] = {0x05, conversationId, 0x00, testData};
+
+        return packageCommand(cancelCurrentTestCommand, 4);
+    }
 }

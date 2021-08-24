@@ -7,13 +7,31 @@
 #include <QDebug>
 #include "ElisSensorTestWidget.h"
 #include "ui_ElisSensorTestWidget.h"
+#include "../../src/elisserial/parsedata/PackagingAndUnpacking.h"
+
+using namespace ElisSerial;
 
 void ElisSensorTestWidget::btnStartTestPressed() {
     qDebug() << "start test pressed";
+    //02 04 05 10 10 10 02 00 13 03
+    std::vector<unsigned char> sensorTestStartCommandVect = PackagingAndUnpacking::requestTestSensor(0x0a, 0x0a, 0x00);
+
+    unsigned char array[sensorTestStartCommandVect.size()];
+    std::copy(sensorTestStartCommandVect.begin(), sensorTestStartCommandVect.end(), array);
+    QByteArray qba = QByteArray::fromRawData(reinterpret_cast<char*>(array), sensorTestStartCommandVect.size());
+    serialPort1->write(qba);
 }
+
 
 void ElisSensorTestWidget::btnStopTestPressed() {
     qDebug() << "stop test pressed";
+    //02 04 05 12 00 00 13 03
+    std::vector<unsigned char> sensorTestCancelCommandVect = PackagingAndUnpacking::requestStopCurrentTest(0x05, 0x00);
+
+    unsigned char array[sensorTestCancelCommandVect.size()];
+    std::copy(sensorTestCancelCommandVect.begin(), sensorTestCancelCommandVect.end(), array);
+    QByteArray qba = QByteArray::fromRawData(reinterpret_cast<char*>(array), sensorTestCancelCommandVect.size());
+    serialPort1->write(qba);
 }
 
 void ElisSensorTestWidget::btnSensortTextExitPressed() {
@@ -62,9 +80,10 @@ void setRightSensors(Ui::ElisSensorTestWidget *ui, QString s14Color, QString s15
     ui->lbS18->setStyleSheet(styleBaseStr + s18Color);
 }
 
-ElisSensorTestWidget::ElisSensorTestWidget(QWidget *parent) :
+ElisSensorTestWidget::ElisSensorTestWidget(QWidget *parent, SerialPort *serialPort) :
         QWidget(parent), ui(new Ui::ElisSensorTestWidget) {
     ui->setupUi(this);
+    serialPort1 = serialPort;
 
     setHLayoutButtons(ui);
     setLeftSensors(ui, "green", "green", "green", "green", "green");

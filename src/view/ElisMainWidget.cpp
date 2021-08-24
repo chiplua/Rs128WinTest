@@ -201,7 +201,8 @@ void ElisMainWidget::btnClearPassageCountPressed() {
 
 void ElisMainWidget::btnSensorTestPressed() {
     ui->tbDisplayInfo->append("Sensor test pressed");
-    ElisSensorTestWidget *sensorTestWidget = new ElisSensorTestWidget();
+    ElisSensorTestWidget *sensorTestWidget = new ElisSensorTestWidget(this->parentWidget(), &serialPort);
+    //ElisSensorTestWidget *sensorTestWidget = new ElisSensorTestWidget(this->parentWidget());
     sensorTestWidget->show();
 }
 
