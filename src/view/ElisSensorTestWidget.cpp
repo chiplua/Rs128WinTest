@@ -4,11 +4,28 @@
 
 // You may need to build the project (run Qt uic code generator) to get "ui_ElisSensorTestWidget.h" resolved
 
+#include <QDebug>
 #include "ElisSensorTestWidget.h"
 #include "ui_ElisSensorTestWidget.h"
 
-void setHLayoutButtons(Ui::ElisSensorTestWidget *ui) {
+void ElisSensorTestWidget::btnStartTestPressed() {
+    qDebug() << "start test pressed";
+}
+
+void ElisSensorTestWidget::btnStopTestPressed() {
+    qDebug() << "stop test pressed";
+}
+
+void ElisSensorTestWidget::btnSensortTextExitPressed() {
+    qDebug() << "exit pressed";
+    this->close();
+}
+
+void ElisSensorTestWidget::setHLayoutButtons(Ui::ElisSensorTestWidget *ui) {
     ui->hLayoutButtons->setContentsMargins(20, 20, 20, 20);
+    connect(ui->btnStartTest, SIGNAL(clicked()), this, SLOT(btnStartTestPressed()));
+    connect(ui->btnStopTest, SIGNAL(clicked()), this, SLOT(btnStopTestPressed()));
+    connect(ui->btnSensorTestExit, SIGNAL(clicked()), this, SLOT(btnSensortTextExitPressed()));
 }
 
 void setLeftSensors(Ui::ElisSensorTestWidget *ui, QString s1Color, QString s2Color, QString s3Color, QString s4Color, QString s5Color) {

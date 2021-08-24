@@ -17,11 +17,16 @@ Q_OBJECT
 
 public:
     explicit ElisSensorTestWidget(QWidget *parent = nullptr);
-
     ~ElisSensorTestWidget() override;
+
+    public slots:
+    void btnStartTestPressed();
+    void btnStopTestPressed();
+    void btnSensortTextExitPressed();
 
 private:
     Ui::ElisSensorTestWidget *ui;
+    void setHLayoutButtons(Ui::ElisSensorTestWidget *ui);
 };
 
 
