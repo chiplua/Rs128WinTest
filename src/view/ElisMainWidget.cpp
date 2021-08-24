@@ -148,10 +148,26 @@ void ElisMainWidget::btnVersionRequestPressed() {
 
 void ElisMainWidget::btnSetEmergencyPressed() {
     ui->tbDisplayInfo->append("Set emergency pressed");
+    //02 10 03 07 0D 01 08 03
+    std::vector<unsigned char> setEmergencyVect = PackagingAndUnpacking::requestEmergency(0x07, 0x01);
+
+    QByteArray qba;
+    unsigned char array[setEmergencyVect.size()];
+    vector2QByteArray(setEmergencyVect, array, &qba);
+
+    serialPort.write(qba);
 }
 
 void ElisMainWidget::btnCancelEmergencyPressed() {
     ui->tbDisplayInfo->append("Cancel emergency pressed");
+    //02 10 03 07 0E 10 02 08 03
+    std::vector<unsigned char> cancelEmergencyVect = PackagingAndUnpacking::requestEmergency(0x07, 0x02);
+
+    QByteArray qba;
+    unsigned char array[cancelEmergencyVect.size()];
+    vector2QByteArray(cancelEmergencyVect, array, &qba);
+
+    serialPort.write(qba);
 }
 
 void ElisMainWidget::btnClearPassageCountPressed() {

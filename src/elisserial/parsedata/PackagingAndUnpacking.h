@@ -36,6 +36,7 @@ namespace ElisSerial {
                                                                    unsigned char property,
                                                                    unsigned char duration,
                                                                    unsigned char flashPeriod);
+        static std::vector<unsigned char> requestEmergency(unsigned char conversionId, unsigned char emergency);
     };
 }
 #endif //ELISRS128WINTEST_PACKAGINGANDUNPACKING_H

@@ -183,4 +183,10 @@ namespace ElisSerial {
 
         return packageCommand(topIndicatorLightCommand, 5);
     }
+
+    std::vector<unsigned char> PackagingAndUnpacking::requestEmergency(unsigned char conversionId, unsigned char emergency) {
+        unsigned char emergencyCommand[] = {0x07, conversionId, emergency};
+
+        return packageCommand(emergencyCommand, 3);
+    }
 }
