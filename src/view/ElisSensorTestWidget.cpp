@@ -11,38 +11,38 @@ void setHLayoutButtons(Ui::ElisSensorTestWidget *ui) {
     ui->hLayoutButtons->setContentsMargins(20, 20, 20, 20);
 }
 
-void setLeftSensors(Ui::ElisSensorTestWidget *ui) {
-    const QString styleStr = "min-width:20px;min-height:20px;max-width:20px;max-height:20px;border-radius:10px;border:1px solid black;background:green";
-    ui->lbS1->setStyleSheet(styleStr);
-    ui->lbS2->setStyleSheet(styleStr);
-    ui->lbS3->setStyleSheet(styleStr);
-    ui->lbS4->setStyleSheet(styleStr);
-    ui->lbS5->setStyleSheet(styleStr);
+void setLeftSensors(Ui::ElisSensorTestWidget *ui, QString s1Color, QString s2Color, QString s3Color, QString s4Color, QString s5Color) {
+    const QString styleBaseStr = "min-width:20px;min-height:20px;max-width:20px;max-height:20px;border-radius:10px;border:1px solid black;background:";
+    ui->lbS1->setStyleSheet(styleBaseStr + s1Color);
+    ui->lbS2->setStyleSheet(styleBaseStr + s2Color);
+    ui->lbS3->setStyleSheet(styleBaseStr + s3Color);
+    ui->lbS4->setStyleSheet(styleBaseStr + s4Color);
+    ui->lbS5->setStyleSheet(styleBaseStr + s5Color);
 }
 
-void setMiddle1Sensors(Ui::ElisSensorTestWidget *ui) {
-    const QString styleStr = "min-width:20px;min-height:20px;max-width:20px;max-height:20px;border-radius:10px;border:1px solid black;background:green";
-    ui->lbS6->setStyleSheet(styleStr);
-    ui->lbS7->setStyleSheet(styleStr);
-    ui->lbS8->setStyleSheet(styleStr);
-    ui->lbS9->setStyleSheet(styleStr);
+void setMiddle1Sensors(Ui::ElisSensorTestWidget *ui, QString s6Color, QString s7Color, QString s8Color, QString s9Color) {
+    const QString styleBaseStr = "min-width:20px;min-height:20px;max-width:20px;max-height:20px;border-radius:10px;border:1px solid black;background:";
+    ui->lbS6->setStyleSheet(styleBaseStr + s6Color);
+    ui->lbS7->setStyleSheet(styleBaseStr + s7Color);
+    ui->lbS8->setStyleSheet(styleBaseStr + s8Color);
+    ui->lbS9->setStyleSheet(styleBaseStr + s9Color);
 }
 
-void setMiddle2Sensors(Ui::ElisSensorTestWidget *ui) {
-    const QString styleStr = "min-width:20px;min-height:20px;max-width:20px;max-height:20px;border-radius:10px;border:1px solid black;background:green";
-    ui->lbS10->setStyleSheet(styleStr);
-    ui->lbS11->setStyleSheet(styleStr);
-    ui->lbS12->setStyleSheet(styleStr);
-    ui->lbS13->setStyleSheet(styleStr);
+void setMiddle2Sensors(Ui::ElisSensorTestWidget *ui, QString s10Color, QString s11Color, QString s12Color, QString s13Color) {
+    const QString styleBaseStr = "min-width:20px;min-height:20px;max-width:20px;max-height:20px;border-radius:10px;border:1px solid black;background:";
+    ui->lbS10->setStyleSheet(styleBaseStr + s10Color);
+    ui->lbS11->setStyleSheet(styleBaseStr + s11Color);
+    ui->lbS12->setStyleSheet(styleBaseStr + s12Color);
+    ui->lbS13->setStyleSheet(styleBaseStr + s13Color);
 }
 
-void setRightSensors(Ui::ElisSensorTestWidget *ui) {
-    const QString styleStr = "min-width:20px;min-height:20px;max-width:20px;max-height:20px;border-radius:10px;border:1px solid black;background:green";
-    ui->lbS14->setStyleSheet(styleStr);
-    ui->lbS15->setStyleSheet(styleStr);
-    ui->lbS16->setStyleSheet(styleStr);
-    ui->lbS17->setStyleSheet(styleStr);
-    ui->lbS18->setStyleSheet(styleStr);
+void setRightSensors(Ui::ElisSensorTestWidget *ui, QString s14Color, QString s15Color, QString s16Color, QString s17Color, QString s18Color) {
+    const QString styleBaseStr = "min-width:20px;min-height:20px;max-width:20px;max-height:20px;border-radius:10px;border:1px solid black;background:";
+    ui->lbS14->setStyleSheet(styleBaseStr + s14Color);
+    ui->lbS15->setStyleSheet(styleBaseStr + s15Color);
+    ui->lbS16->setStyleSheet(styleBaseStr + s16Color);
+    ui->lbS17->setStyleSheet(styleBaseStr + s17Color);
+    ui->lbS18->setStyleSheet(styleBaseStr + s18Color);
 }
 
 ElisSensorTestWidget::ElisSensorTestWidget(QWidget *parent) :
@@ -50,10 +50,10 @@ ElisSensorTestWidget::ElisSensorTestWidget(QWidget *parent) :
     ui->setupUi(this);
 
     setHLayoutButtons(ui);
-    setLeftSensors(ui);
-    setMiddle1Sensors(ui);
-    setMiddle2Sensors(ui);
-    setRightSensors(ui);
+    setLeftSensors(ui, "green", "green", "green", "green", "green");
+    setMiddle1Sensors(ui, "green", "green", "green", "green");
+    setMiddle2Sensors(ui, "green", "green", "green", "green");
+    setRightSensors(ui, "green", "green", "green", "green", "green");
 }
 
 ElisSensorTestWidget::~ElisSensorTestWidget() {
