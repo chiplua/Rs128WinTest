@@ -23,6 +23,12 @@ QPalette getButtonCommonPalette() {
     return pal;
 }
 
+void vector2QByteArray(const std::vector<unsigned char> vect, unsigned char array[], QByteArray *qba) {
+    std::copy(vect.begin(), vect.end(), array);
+
+    *qba = QByteArray::fromRawData(reinterpret_cast<char*>(array), vect.size());
+}
+
 void ElisMainWidget::btnOpenComClicked() {
     ui->tbDisplayInfo->append("Open the com port pressed");
 }
@@ -34,12 +40,12 @@ void ElisMainWidget::btnCloseComClicked() {
 void ElisMainWidget::btnCurrentStatusRequestPressed() {
     ui->tbDisplayInfo->append("Current status request button pressed");
     std::vector<unsigned char> statusVect = PackagingAndUnpacking::requestStatus(0);
-    unsigned char statusArray[statusVect.size()];
-    std::copy(statusVect.begin(), statusVect.end(), statusArray);
-    QByteArray qa = QByteArray::fromRawData(reinterpret_cast<char*>(statusArray), statusVect.size());
-    //QByteArray qa((char *)versionArray, versionVect.size());
+    QByteArray qba;
+    unsigned char array[statusVect.size()];
+    vector2QByteArray(statusVect, array, &qba);
+
     //qDebug() << qa << qa.toHex() << qa.size();
-    serialPort.write(qa);
+    serialPort.write(qba);
 }
 
 void ElisMainWidget::btnOkPressed() {
@@ -61,30 +67,36 @@ void ElisMainWidget::btnParamterSettingPressed() {
                                                                                                0x00,
                                                                                                0x00,
                                                                                                0x00);
-    unsigned char parametersArray[parametersVect.size()];
-    std::copy(parametersVect.begin(), parametersVect.end(), parametersArray);
-    QByteArray qa = QByteArray::fromRawData(reinterpret_cast<char*>(parametersArray), parametersVect.size());
-    serialPort.write(qa);
+
+    QByteArray qba;
+    unsigned char array[parametersVect.size()];
+    vector2QByteArray(parametersVect, array, &qba);
+
+    serialPort.write(qba);
 }
 
 void ElisMainWidget::btnGateModeSettingPressed() {
     ui->tbDisplayInfo->append("Gate mode setting pressed");
     //02 10 03 10 02 06 04 10 03 03 error
     std::vector<unsigned char> gateModeVect = PackagingAndUnpacking::requestSetGateMode(0x02, 0x02);
-    unsigned char gateModeArray[gateModeVect.size()];
-    std::copy(gateModeVect.begin(), gateModeVect.end(), gateModeArray);
-    QByteArray qa = QByteArray::fromRawData(reinterpret_cast<char*>(gateModeArray), gateModeVect.size());
-    serialPort.write(qa);
+
+    QByteArray qba;
+    unsigned char array[gateModeVect.size()];
+    vector2QByteArray(gateModeVect, array, &qba);
+
+    serialPort.write(qba);
 }
 
 void ElisMainWidget::btnAisleModeSettingPressed() {
     ui->tbDisplayInfo->append("Aisle mode setting pressed");
     //02 10 03 10 03 07 01 06 03
     std::vector<unsigned char> aisleModeVect = PackagingAndUnpacking::requestSetAisleMode(0x03, 0x02);
-    unsigned char aisleModeArray[aisleModeVect.size()];
-    std::copy(aisleModeVect.begin(), aisleModeVect.end(), aisleModeArray);
-    QByteArray qa = QByteArray::fromRawData(reinterpret_cast<char*>(aisleModeArray), aisleModeVect.size());
-    serialPort.write(qa);
+
+    QByteArray qba;
+    unsigned char array[aisleModeVect.size()];
+    vector2QByteArray(aisleModeVect, array, &qba);
+
+    serialPort.write(qba);
 }
 
 void ElisMainWidget::btnTestModulePressed() {
