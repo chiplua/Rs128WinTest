@@ -202,7 +202,7 @@ void ElisMainWidget::btnClearPassageCountPressed() {
 void ElisMainWidget::btnSensorTestPressed() {
     ui->tbDisplayInfo->append("Sensor test pressed");
     ElisSensorTestWidget *sensorTestWidget = new ElisSensorTestWidget(this->parentWidget(), &serialPort);
-    //ElisSensorTestWidget *sensorTestWidget = new ElisSensorTestWidget(this->parentWidget());
+    sensorTestWidget->setWindowModality(Qt::ApplicationModal);//设置子窗口打开后禁止操作母窗口
     sensorTestWidget->show();
 }
 
