@@ -38,6 +38,7 @@ namespace ElisSerial {
                                                                    unsigned char flashPeriod);
         static std::vector<unsigned char> requestEmergency(unsigned char conversionId, unsigned char emergency);
         static std::vector<unsigned char> requestClearPasssageCount(unsigned char conversationId, unsigned char data);
+        static std::vector<unsigned char> requestSetGedMode(unsigned char conversationId, unsigned char mode);
     };
 }
 #endif //ELISRS128WINTEST_PACKAGINGANDUNPACKING_H

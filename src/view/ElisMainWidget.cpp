@@ -140,6 +140,14 @@ void ElisMainWidget::btnStopStressTestPressed() {
 
 void ElisMainWidget::btnGedModePressed() {
     ui->tbDisplayInfo->append("Ged mode pressed");
+    //02 10 03 0c 0c 00 10 03 03
+    std::vector<unsigned char> setGedModeCommandVect = PackagingAndUnpacking::requestSetGedMode(0x0C, 0x00);
+
+    QByteArray qba;
+    unsigned char array[setGedModeCommandVect.size()];
+    vector2QByteArray(setGedModeCommandVect, array, &qba);
+
+    serialPort.write(qba);
 }
 
 void ElisMainWidget::btnVersionRequestPressed() {

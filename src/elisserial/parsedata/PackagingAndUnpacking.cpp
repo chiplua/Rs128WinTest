@@ -195,4 +195,10 @@ namespace ElisSerial {
 
         return packageCommand(clearPassageCountCommand, 3);
     }
+
+    std::vector<unsigned char> PackagingAndUnpacking::requestSetGedMode(unsigned char conversationId, unsigned char mode) {
+        unsigned char setGedModeCommand[3] = {0x0C, conversationId, mode};
+
+        return packageCommand(setGedModeCommand, 3);
+    }
 }
