@@ -121,6 +121,12 @@ namespace ElisSerial {
         return packageCommand(versionCommand, 2);
     }
 
+    std::vector<unsigned char> PackagingAndUnpacking::requestStatus(unsigned char conversationId) {
+        unsigned char statusCommand[2] = {0x09, conversationId};
+
+        return packageCommand(statusCommand, 2);
+    }
+
     std::vector<unsigned char> PackagingAndUnpacking::requestConfigParameters(unsigned char conversationId,
                                                                               unsigned char generalConfiguration,
                                                                               unsigned char maxPassageAuthorization,
