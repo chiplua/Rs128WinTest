@@ -31,12 +31,33 @@ void vector2QByteArray(const std::vector<unsigned char> vect, unsigned char arra
     *qba = QByteArray::fromRawData(reinterpret_cast<char*>(array), vect.size());
 }
 
+void ElisMainWidget::serialWriteData(QByteArray qba) {
+    if (serialPort.isOpen()) {
+        serialPort.write(qba);
+    } else {
+        QMessageBox::information(NULL, "Serial port wait connect", "Serial port not open.",
+                                 QMessageBox::Yes, QMessageBox::Yes);
+
+    }
+
+}
+
 void ElisMainWidget::btnOpenComClicked() {
     ui->tbDisplayInfo->append("Open the com port pressed");
+    bool isOpendSuccess = serialPort.openPort(serialPortName);
+    qDebug() << serialPortName << " opened " << isOpendSuccess;
+
+    if (isOpendSuccess) {
+        ui->tbDisplayInfo->append(serialPortName + " open success");
+    } else {
+        ui->tbDisplayInfo->append(serialPortName + " open fail");
+    }
 }
 
 void ElisMainWidget::btnCloseComClicked() {
     ui->tbDisplayInfo->append("Close the com port pressed");
+    serialPort.close();
+    qDebug() << serialPortName << " closed";
 }
 
 void ElisMainWidget::btnCurrentStatusRequestPressed() {
@@ -47,7 +68,7 @@ void ElisMainWidget::btnCurrentStatusRequestPressed() {
     vector2QByteArray(statusVect, array, &qba);
 
     //qDebug() << qa << qa.toHex() << qa.size();
-    serialPort.write(qba);
+    serialWriteData(qba);
 }
 
 void ElisMainWidget::btnOkPressed() {
@@ -75,8 +96,7 @@ void ElisMainWidget::btnParamterSettingPressed() {
     QByteArray qba;
     unsigned char array[parametersVect.size()];
     vector2QByteArray(parametersVect, array, &qba);
-
-    serialPort.write(qba);
+    serialWriteData(qba);
 }
 
 void ElisMainWidget::btnGateModeSettingPressed() {
@@ -87,8 +107,7 @@ void ElisMainWidget::btnGateModeSettingPressed() {
     QByteArray qba;
     unsigned char array[gateModeVect.size()];
     vector2QByteArray(gateModeVect, array, &qba);
-
-    serialPort.write(qba);
+    serialWriteData(qba);
 }
 
 void ElisMainWidget::btnAisleModeSettingPressed() {
@@ -99,8 +118,7 @@ void ElisMainWidget::btnAisleModeSettingPressed() {
     QByteArray qba;
     unsigned char array[aisleModeVect.size()];
     vector2QByteArray(aisleModeVect, array, &qba);
-
-    serialPort.write(qba);
+    serialWriteData(qba);
 }
 
 void ElisMainWidget::btnTestModulePressed() {
@@ -111,8 +129,7 @@ void ElisMainWidget::btnTestModulePressed() {
     QByteArray qba;
     unsigned char array[testModuleVect.size()];
     vector2QByteArray(testModuleVect, array, &qba);
-
-    serialPort.write(qba);
+    serialWriteData(qba);
 }
 
 void ElisMainWidget::btnTopIndicatorLigthPressed() {
@@ -126,8 +143,7 @@ void ElisMainWidget::btnTopIndicatorLigthPressed() {
     QByteArray qba;
     unsigned char array[topIndicatorLightVect.size()];
     vector2QByteArray(topIndicatorLightVect, array, &qba);
-
-    serialPort.write(qba);
+    serialWriteData(qba);
 }
 
 void ElisMainWidget::btnPassageAuthorizationPressed() {
@@ -150,8 +166,7 @@ void ElisMainWidget::btnGedModePressed() {
     QByteArray qba;
     unsigned char array[setGedModeCommandVect.size()];
     vector2QByteArray(setGedModeCommandVect, array, &qba);
-
-    serialPort.write(qba);
+    serialWriteData(qba);
 }
 
 void ElisMainWidget::btnVersionRequestPressed() {
@@ -162,8 +177,7 @@ void ElisMainWidget::btnVersionRequestPressed() {
     QByteArray qba;
     unsigned char array[versionCommandVect.size()];
     vector2QByteArray(versionCommandVect, array, &qba);
-
-    serialPort.write(qba);
+    serialWriteData(qba);
 }
 
 void ElisMainWidget::btnSetEmergencyPressed() {
@@ -174,8 +188,7 @@ void ElisMainWidget::btnSetEmergencyPressed() {
     QByteArray qba;
     unsigned char array[setEmergencyVect.size()];
     vector2QByteArray(setEmergencyVect, array, &qba);
-
-    serialPort.write(qba);
+    serialWriteData(qba);
 }
 
 void ElisMainWidget::btnCancelEmergencyPressed() {
@@ -186,8 +199,7 @@ void ElisMainWidget::btnCancelEmergencyPressed() {
     QByteArray qba;
     unsigned char array[cancelEmergencyVect.size()];
     vector2QByteArray(cancelEmergencyVect, array, &qba);
-
-    serialPort.write(qba);
+    serialWriteData(qba);
 }
 
 void ElisMainWidget::btnClearPassageCountPressed() {
@@ -198,8 +210,7 @@ void ElisMainWidget::btnClearPassageCountPressed() {
     QByteArray qba;
     unsigned char array[clearPassageCountVect.size()];
     vector2QByteArray(clearPassageCountVect, array, &qba);
-
-    serialPort.write(qba);
+    serialWriteData(qba);
 }
 
 void ElisMainWidget::btnSensorTestPressed() {
@@ -222,14 +233,6 @@ void ElisMainWidget::cbComListChanged(int i) {
     qDebug() << "cbComListChanged: i = %d, strList = %s" << i;
     serialPortName = serialPortsNames.at(i);
     qDebug() << "You select serial port %s " << serialPortName;
-    bool isOpendSuccess = serialPort.openPort(serialPortName);
-    qDebug() << serialPortName << " opened " << isOpendSuccess;
-
-    if (isOpendSuccess) {
-        ui->tbDisplayInfo->append(serialPortName + " open success");
-    } else {
-        ui->tbDisplayInfo->append(serialPortName + " open fail");
-    }
 }
 
 void ElisMainWidget::cbModesChanged(int index) {

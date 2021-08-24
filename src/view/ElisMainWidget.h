@@ -73,6 +73,7 @@ private:
     void setNormalFlashGedMode(Ui::ElisMainWidget *ui);
     void setRightButtons(Ui::ElisMainWidget *ui);
     void setVLayoutPassengersLeft(Ui::ElisMainWidget *ui);
+    void serialWriteData(QByteArray qba);
 };
 
 
