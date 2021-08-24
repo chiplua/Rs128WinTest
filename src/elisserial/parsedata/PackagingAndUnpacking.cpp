@@ -115,18 +115,6 @@ namespace ElisSerial {
         return convertArrayToSend(commandOriginArray, commandOriginVect.size());
     }
 
-    std::vector<unsigned char> PackagingAndUnpacking::requestVersion(unsigned char conversationId) {
-        unsigned char versionCommand[2] = {0x08, conversationId};
-
-        return packageCommand(versionCommand, 2);
-    }
-
-    std::vector<unsigned char> PackagingAndUnpacking::requestStatus(unsigned char conversationId) {
-        unsigned char statusCommand[2] = {0x09, conversationId};
-
-        return packageCommand(statusCommand, 2);
-    }
-
     std::vector<unsigned char> PackagingAndUnpacking::requestConfigParameters(unsigned char conversationId,
                                                                               unsigned char generalConfiguration,
                                                                               unsigned char maxPassageAuthorization,
@@ -188,5 +176,17 @@ namespace ElisSerial {
         unsigned char emergencyCommand[] = {0x07, conversionId, emergency};
 
         return packageCommand(emergencyCommand, 3);
+    }
+
+    std::vector<unsigned char> PackagingAndUnpacking::requestVersion(unsigned char conversationId) {
+        unsigned char versionCommand[2] = {0x08, conversationId};
+
+        return packageCommand(versionCommand, 2);
+    }
+
+    std::vector<unsigned char> PackagingAndUnpacking::requestStatus(unsigned char conversationId) {
+        unsigned char statusCommand[2] = {0x09, conversationId};
+
+        return packageCommand(statusCommand, 2);
     }
 }

@@ -144,6 +144,14 @@ void ElisMainWidget::btnGedModePressed() {
 
 void ElisMainWidget::btnVersionRequestPressed() {
     ui->tbDisplayInfo->append("Version request pressed");
+    //02 10 02 08 08 10 02 03
+    std::vector<unsigned char> versionCommandVect = PackagingAndUnpacking::requestVersion(0x08);
+
+    QByteArray qba;
+    unsigned char array[versionCommandVect.size()];
+    vector2QByteArray(versionCommandVect, array, &qba);
+
+    serialPort.write(qba);
 }
 
 void ElisMainWidget::btnSetEmergencyPressed() {
