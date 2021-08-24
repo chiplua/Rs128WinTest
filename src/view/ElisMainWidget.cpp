@@ -8,6 +8,7 @@
 #include "ElisMainWidget.h"
 #include "ui_ElisMainWidget.h"
 #include <QDebug>
+#include <QMessageBox>
 #include "ComboListContent.h"
 #include "../elisserial/parsedata/PackagingAndUnpacking.h"
 #include "../utils/StringUtils.h"
@@ -203,9 +204,14 @@ void ElisMainWidget::btnClearPassageCountPressed() {
 
 void ElisMainWidget::btnSensorTestPressed() {
     ui->tbDisplayInfo->append("Sensor test pressed");
-    ElisSensorTestWidget *sensorTestWidget = new ElisSensorTestWidget(this->parentWidget(), &serialPort);
-    sensorTestWidget->setWindowModality(Qt::ApplicationModal);//设置子窗口打开后禁止操作母窗口
-    sensorTestWidget->show();
+    if (serialPort.isOpen()) {
+        ElisSensorTestWidget *sensorTestWidget = new ElisSensorTestWidget(this->parentWidget(), &serialPort);
+        sensorTestWidget->setWindowModality(Qt::ApplicationModal);//设置子窗口打开后禁止操作母窗口
+        sensorTestWidget->show();
+    } else {
+        QMessageBox::information(NULL, "Serial port wait connect", "Serial port not open.",
+                                 QMessageBox::Yes, QMessageBox::Yes);
+    }
 }
 
 void ElisMainWidget::btnClearInfoPressed() {
