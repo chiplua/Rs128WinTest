@@ -101,6 +101,14 @@ void ElisMainWidget::btnAisleModeSettingPressed() {
 
 void ElisMainWidget::btnTestModulePressed() {
     ui->tbDisplayInfo->append("Test module pressed");
+    //02 04 05 0A 00 00 0B 03
+    std::vector<unsigned char> testModuleVect = PackagingAndUnpacking::requestTestModule(0x04, 0x02);
+
+    QByteArray qba;
+    unsigned char array[testModuleVect.size()];
+    vector2QByteArray(testModuleVect, array, &qba);
+
+    serialPort.write(qba);
 }
 
 void ElisMainWidget::btnTopIndicatorLigthPressed() {
