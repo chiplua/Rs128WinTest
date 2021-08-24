@@ -32,6 +32,10 @@ namespace ElisSerial {
         static std::vector<unsigned char> requestSetAisleMode(unsigned char conversationId, unsigned char aisleMode);
         static std::vector<unsigned char> requestStatus(unsigned char conversationId);
         static std::vector<unsigned char> requestTestModule(unsigned char conversationId, unsigned char direction);
+        static std::vector<unsigned char> requestTopIndicatorLight(unsigned char conversationId,
+                                                                   unsigned char property,
+                                                                   unsigned char duration,
+                                                                   unsigned char flashPeriod);
     };
 }
 #endif //ELISRS128WINTEST_PACKAGINGANDUNPACKING_H

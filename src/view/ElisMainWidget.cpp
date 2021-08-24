@@ -113,6 +113,17 @@ void ElisMainWidget::btnTestModulePressed() {
 
 void ElisMainWidget::btnTopIndicatorLigthPressed() {
     ui->tbDisplayInfo->append("Top indicator light pressed");
+    //02 05 06 0B 00 01 00 09 03
+    std::vector<unsigned char> topIndicatorLightVect = PackagingAndUnpacking::requestTopIndicatorLight(0x05,
+                                                                                                0x00,
+                                                                                                0x01,
+                                                                                                0x00);
+
+    QByteArray qba;
+    unsigned char array[topIndicatorLightVect.size()];
+    vector2QByteArray(topIndicatorLightVect, array, &qba);
+
+    serialPort.write(qba);
 }
 
 void ElisMainWidget::btnPassageAuthorizationPressed() {

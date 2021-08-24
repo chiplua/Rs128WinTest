@@ -174,4 +174,13 @@ namespace ElisSerial {
 
         return packageCommand(testModuleCommand, 3);
     }
+
+    std::vector<unsigned char> PackagingAndUnpacking::requestTopIndicatorLight(unsigned char conversationId,
+                                                                               unsigned char property,
+                                                                               unsigned char duration,
+                                                                               unsigned char flashPeriod) {
+        unsigned char topIndicatorLightCommand[5] = {0x06, conversationId, property, duration, flashPeriod};
+
+        return packageCommand(topIndicatorLightCommand, 5);
+    }
 }
