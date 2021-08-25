@@ -100,5 +100,14 @@ namespace ElisTool {
 
         return ret;
     }
+
+    bool StringUtils::isBccRight(std::vector<unsigned char> resVect, unsigned char bcc) {
+        unsigned calBcc = 0;
+        for (int i = 0; i < resVect.size() - 1; i++) {
+            calBcc = (calBcc ^ resVect[i]);
+        }
+
+        return (calBcc == bcc) ? true : false;
+    }
 };
 

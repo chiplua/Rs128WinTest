@@ -15,6 +15,7 @@ namespace ElisTool {
         static std::vector<std::string> splitString(std::string str, std::string pattern);
         static std::string intArray2String(int *pArray, int size);
         static std::string vec2String(std::vector<unsigned char> res);
+        static bool isBccRight(std::vector<unsigned char> res, unsigned char bcc);
     };
 }
 #endif //ELISSGPGATECPP_STRINGUTILS_H

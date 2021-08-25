@@ -40,7 +40,7 @@ namespace ElisSerial {
         return bytes;
     }
 
-    std::vector<unsigned char> PackagingAndUnpacking::convertReceivedArray(unsigned char originArray[], int arraySize) {
+    std::vector<unsigned char> PackagingAndUnpacking::convertReceivedArray2OnlyLenDataBcc(unsigned char originArray[], int arraySize) {
         std::vector<unsigned char> recvVect;
 
         if (originArray[0] != PackagingAndUnpacking::BEGIN_COMMAND_BYTE ||
@@ -67,11 +67,7 @@ namespace ElisSerial {
         std::vector<unsigned char> destVector = toPrimitives(std::copy(recvVect.begin(), recvVect.end(), destArray), recvVect.size());
         unsigned char bcc = destVector.size();
 
-        for (int i = 1; i < destVector.size(); i++) {
-            bcc = (bcc ^ destVector[i]);
-        }
-
-        return destVector;
+        return recvVect;
     }
 
     std::vector<unsigned char> PackagingAndUnpacking::convertArrayToSend(unsigned char originArray[], int arraySize) {

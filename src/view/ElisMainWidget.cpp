@@ -58,9 +58,15 @@ void ElisMainWidget::receiveComVersion() {
     //第三种：无头有尾且变量已有内容，，附加后输出数据，并清空变量
     if ((!bufferData.contains(0x02)) && (bufferData.contains(0x03)) && (!pasteData.isNull())) {
         pasteData.append(bufferData);
+        std::vector<unsigned char> resultVect = PackagingAndUnpacking::convertReceivedArray2OnlyLenDataBcc(reinterpret_cast<unsigned char*>(pasteData.data()), pasteData.size());
+        if (resultVect.size() > 0) {
+            bool isBccRight = StringUtils::isBccRight(resultVect, resultVect.at(resultVect.size() - 1));
+            qDebug() << "resultVect1 = " << resultVect;
+            qDebug() << "resultVect1 bcc right = " << isBccRight;
+        }
 
         int shouldLength = 4 + pasteData.at(1);
-        int realLength = pasteData.length();
+        int realLength = pasteData.size();
         if (shouldLength != realLength) {//未读取完整，追加数据
         } else {//已完整读取, 附加后输出数据，并清空变量
             readData = pasteData;
@@ -71,9 +77,15 @@ void ElisMainWidget::receiveComVersion() {
     //第四2种：有头有尾, 需判断是否为一段完整的内容
     if ((bufferData.contains(0x02)) && (bufferData.contains(0x03))) {
         pasteData.append(bufferData);
+        std::vector<unsigned char> resultVect = PackagingAndUnpacking::convertReceivedArray2OnlyLenDataBcc(reinterpret_cast<unsigned char*>(pasteData.data()), pasteData.size());
+        if (resultVect.size() > 0) {
+            bool isBccRight = StringUtils::isBccRight(resultVect, resultVect.at(resultVect.size() - 1));
+            qDebug() << "resultVect2 = " << resultVect;
+            qDebug() << "resultVect2 bcc right = " << isBccRight;
+        }
 
         int shouldLength = 4 + pasteData.at(1);
-        int realLength = pasteData.length();
+        int realLength = resultVect.size();
         if (shouldLength != realLength) { //有头有尾，但不是完整数据，继续添加
         } else {//有头有尾（一段完整的内容），先清空原有内容，再附加，然后输出，最后清空变量
             pasteData.clear();
@@ -140,7 +152,8 @@ void ElisMainWidget::btnCurrentStatusRequestPressed() {
     vector2QByteArray(statusVect, array, &qba);
 
     //qDebug() << qa << qa.toHex() << qa.size();
-    serialWriteData(qba);
+    //serialWriteData(qba);
+    std::vector<unsigned char> resultVect = PackagingAndUnpacking::convertReceivedArray2OnlyLenDataBcc(reinterpret_cast<unsigned char*>(pasteData.data()), 8);
 }
 
 void ElisMainWidget::btnOkPressed() {

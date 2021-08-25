@@ -23,7 +23,7 @@ namespace ElisSerial {
         static const int COMMAND_GED_MODE = 0x0C;
     public:
         static std::vector<unsigned char> toPrimitives(unsigned char oBytes[], int arraySize);
-        static std::vector<unsigned char> convertReceivedArray(unsigned char originArray[], int arraySize);
+        static std::vector<unsigned char> convertReceivedArray2OnlyLenDataBcc(unsigned char originArray[], int arraySize);
         static std::vector<unsigned char> convertArrayToSend(unsigned char originArray[], int arraySize);
         static std::vector<unsigned char> packageCommand(unsigned char commandDataArray[], int arraySize);
         static std::vector<unsigned char> requestVersion(unsigned char conversationId);
