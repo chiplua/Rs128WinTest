@@ -127,7 +127,7 @@ namespace ElisSerial {
                                                                               unsigned char reserve2,
                                                                               unsigned char reserve3,
                                                                               unsigned char reserve4) {
-        unsigned char configurationCommand[13] = {0x01,
+        unsigned char configurationCommand[13] = {COMMAND_PARAMETER_CONFIG,
                                                 conversationId,
                                                 generalConfiguration,
                                                 maxPassageAuthorization,
@@ -146,25 +146,25 @@ namespace ElisSerial {
     }
 
     std::vector<unsigned char> PackagingAndUnpacking::requestSetGateMode(unsigned char conversationId, unsigned char gateMode) {
-        unsigned char setGateModeCommand[3] = {0x02, conversationId, gateMode};
+        unsigned char setGateModeCommand[3] = {COMMAND_GATE_MODE, conversationId, gateMode};
 
         return packageCommand(setGateModeCommand, 3);
     }
 
     std::vector<unsigned char> PackagingAndUnpacking::requestSetAisleMode(unsigned char conversationId, unsigned char aisleMode) {
-        unsigned char setAisleModeCommand[3] = {0x03, conversationId, aisleMode};
+        unsigned char setAisleModeCommand[3] = {COMMAND_AISLE_MODE, conversationId, aisleMode};
 
         return packageCommand(setAisleModeCommand, 3);
     }
 
     std::vector<unsigned char> PackagingAndUnpacking::requestPassageAuthorization(unsigned char conversationId, unsigned char direction) {
-        unsigned char passageAuthorizationCommand[3] = {0x04, conversationId, direction};
+        unsigned char passageAuthorizationCommand[3] = {COMMAND_PASSAGE_AUTHORIZATION, conversationId, direction};
 
         return packageCommand(passageAuthorizationCommand, 3);
     }
 
     std::vector<unsigned char> PackagingAndUnpacking::requestTestModule(unsigned char conversationId, unsigned char testMode, unsigned char testData) {//protocal 3.4.允许通行
-        unsigned char testModuleCommand[4] = {0x05, conversationId, testMode, testData};
+        unsigned char testModuleCommand[4] = {COMMAND_TEST_MODULE, conversationId, testMode, testData};
 
         return packageCommand(testModuleCommand, 4);
     }
@@ -173,49 +173,49 @@ namespace ElisSerial {
                                                                                unsigned char property,
                                                                                unsigned char duration,
                                                                                unsigned char flashPeriod) {
-        unsigned char topIndicatorLightCommand[5] = {0x06, conversationId, property, duration, flashPeriod};
+        unsigned char topIndicatorLightCommand[5] = {COMMAND_TOP_INDICATOR_LIGHT, conversationId, property, duration, flashPeriod};
 
         return packageCommand(topIndicatorLightCommand, 5);
     }
 
     std::vector<unsigned char> PackagingAndUnpacking::requestEmergency(unsigned char conversionId, unsigned char emergency) {
-        unsigned char emergencyCommand[] = {0x07, conversionId, emergency};
+        unsigned char emergencyCommand[] = {COMMAND_EMERGENCY, conversionId, emergency};
 
         return packageCommand(emergencyCommand, 3);
     }
 
     std::vector<unsigned char> PackagingAndUnpacking::requestVersion(unsigned char conversationId) {
-        unsigned char versionCommand[2] = {0x08, conversationId};
+        unsigned char versionCommand[2] = {COMMAND_VERSION, conversationId};
 
         return packageCommand(versionCommand, 2);
     }
 
     std::vector<unsigned char> PackagingAndUnpacking::requestStatus(unsigned char conversationId) {
-        unsigned char statusCommand[2] = {0x09, conversationId};
+        unsigned char statusCommand[2] = {COMMAND_STATUS, conversationId};
 
         return packageCommand(statusCommand, 2);
     }
 
     std::vector<unsigned char> PackagingAndUnpacking::requestClearPasssageCount(unsigned char conversationId, unsigned char data) {
-        unsigned char clearPassageCountCommand[3] = {0x0B, conversationId, data};
+        unsigned char clearPassageCountCommand[3] = {COMMAND_CLEAR_PASSSAGE_COUNT, conversationId, data};
 
         return packageCommand(clearPassageCountCommand, 3);
     }
 
     std::vector<unsigned char> PackagingAndUnpacking::requestSetGedMode(unsigned char conversationId, unsigned char mode) {
-        unsigned char setGedModeCommand[3] = {0x0C, conversationId, mode};
+        unsigned char setGedModeCommand[3] = {COMMAND_GED_MODE, conversationId, mode};
 
         return packageCommand(setGedModeCommand, 3);
     }
 
     std::vector<unsigned char> PackagingAndUnpacking::requestTestSensor(unsigned char conversationId, unsigned char action, unsigned char testData) {
-        unsigned char sensorsTestCommand[5] = {0x05, conversationId, 0x02, testData};
+        unsigned char sensorsTestCommand[5] = {COMMAND_TEST_MODULE, conversationId, 0x02, testData};
 
         return packageCommand(sensorsTestCommand, 4);
     }
 
     std::vector<unsigned char> PackagingAndUnpacking::requestStopCurrentTest(unsigned char conversationId, unsigned char testData) {
-        unsigned char cancelCurrentTestCommand[4] = {0x05, conversationId, 0x00, testData};
+        unsigned char cancelCurrentTestCommand[4] = {COMMAND_TEST_MODULE, conversationId, 0x00, testData};
 
         return packageCommand(cancelCurrentTestCommand, 4);
     }

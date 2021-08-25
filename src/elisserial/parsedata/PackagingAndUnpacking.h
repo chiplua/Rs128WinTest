@@ -10,6 +10,17 @@ namespace ElisSerial {
     private:
         static const int BEGIN_COMMAND_BYTE = 0x02;
         static const int END_COMMAND_BYTE = 0x03;
+        static const int COMMAND_PARAMETER_CONFIG = 0x01;
+        static const int COMMAND_GATE_MODE = 0x02;
+        static const int COMMAND_AISLE_MODE = 0x03;
+        static const int COMMAND_PASSAGE_AUTHORIZATION = 0x04;
+        static const int COMMAND_TEST_MODULE = 0x05;
+        static const int COMMAND_TOP_INDICATOR_LIGHT = 0x06;
+        static const int COMMAND_EMERGENCY = 0x07;
+        static const int COMMAND_VERSION = 0x08;
+        static const int COMMAND_STATUS = 0x09;
+        static const int COMMAND_CLEAR_PASSSAGE_COUNT = 0x0B;
+        static const int COMMAND_GED_MODE = 0x0C;
     public:
         static std::vector<unsigned char> toPrimitives(unsigned char oBytes[], int arraySize);
         static std::vector<unsigned char> convertReceivedArray(unsigned char originArray[], int arraySize);
