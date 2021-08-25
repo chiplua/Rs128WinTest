@@ -31,7 +31,7 @@ namespace ElisSerial {
         static std::vector<unsigned char> requestSetGateMode(unsigned char conversationId, unsigned char gateMode);
         static std::vector<unsigned char> requestSetAisleMode(unsigned char conversationId, unsigned char aisleMode);
         static std::vector<unsigned char> requestStatus(unsigned char conversationId);
-        static std::vector<unsigned char> requestTestModule(unsigned char conversationId, unsigned char direction);
+        static std::vector<unsigned char> requestTestModule(unsigned char conversationId, unsigned char testMode, unsigned char testData);
         static std::vector<unsigned char> requestTopIndicatorLight(unsigned char conversationId,
                                                                    unsigned char property,
                                                                    unsigned char duration,
@@ -45,22 +45,3 @@ namespace ElisSerial {
     };
 }
 #endif //ELISRS128WINTEST_PACKAGINGANDUNPACKING_H
-/*
-        static char[] requestClientRadarStartScan(int conversationId, CommandModel commandModel);
-        static char[] requestClientRadarStopScan(short conversationId, CommandModel commandModel);
-        static char[] requestClientStartDesinfection(short conversationId, int minutes, CommandModel commandModel);
-        static char[] requestClientStopDesinfection(short conversationId, int minutes, CommandModel commandModel);
-        static char[] requestClientVersions(short conversationId, CommandModel commandModel);
-        static char[] requestClientStatus(short conversationId, CommandModel commandModel);
-        static char[] requestClientStartPilotLed(short conversationId, CommandModel commandModel);
-        static char[] requestClientStopPilotLed(short conversationId, CommandModel commandModel);
-        static char[] responseClientSomeBodyIn(short conversationId, byte resultCode, CommandModel commandModel);
-        static char[] requestClientUpdateFirmware(short conversationId, CommandModel commandModel, byte board, byte number);
-        static char[] requestClientSendFirmwareLength(short conversationId, CommandModel commandModel, byte board, byte number, int length);
-        static char[] requestClientSendFirmwareData(short conversationId, CommandModel commandModel, byte board, byte number, byte[] data);
-        static char[] requestClientSendFirmwareOver(short conversationId, CommandModel commandModel, byte board, byte number);
-        static char[] requestClientBootloader2Mainboard(short conversationId, CommandModel commandModel, byte board, byte number);
-        static char[] packageCommand(byte[] commandDataArray, CommandModel commandModel);
-        static char[] convertArrayToSend(byte[] originArray, CommandModel commandModel);
-        static char[] convertReceivedArray(byte[] originArray);
-*/
