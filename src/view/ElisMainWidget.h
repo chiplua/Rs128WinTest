@@ -54,6 +54,7 @@ public:
         void cbbtnGeneralConfigurationStateChanged(int state);
         void cbbtnAllowEntryCountStateChanged(int state);
         void cbbtnAllowExitCountStateChanged(int state);
+        void comPortChanged();
 
 private:
     Ui::ElisMainWidget *ui;

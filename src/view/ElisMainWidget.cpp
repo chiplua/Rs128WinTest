@@ -291,29 +291,24 @@ void ElisMainWidget::cbbtnAllowExitCountStateChanged(int state) {
     ui->tbDisplayInfo->append("Check box allow exit count state changed: state = " + QString::fromStdString(std::to_string(state)));
 }
 
+void ElisMainWidget::comPortChanged() {
+    ui->tbDisplayInfo->append("combo box clicked");
+}
+
 void ElisMainWidget::initComboBox(Ui::ElisMainWidget *ui) {
-            foreach (const QSerialPortInfo &info, QSerialPortInfo::availablePorts()) {
-            qDebug() << "Name : " << info.portName();
-            qDebug() << "Description : " << info.description();
-            qDebug() << "Manufacturer: " << info.manufacturer();
-            qDebug() << "Serial Number: " << info.serialNumber();
-            qDebug() << "System Location: " << info.systemLocation();
+    foreach (const QSerialPortInfo &info, QSerialPortInfo::availablePorts()) {
+        qDebug() << "Name : " << info.portName();
+        qDebug() << "Description : " << info.description();
+        qDebug() << "Manufacturer: " << info.manufacturer();
+        qDebug() << "Serial Number: " << info.serialNumber();
+        qDebug() << "System Location: " << info.systemLocation();
 
-            serialPortsNames << info.portName();
-        }
-
-    ui->cbComList->clear();
-    ui->cbComList->addItems(serialPortsNames);
-
-    if (ui->cbComList->count() == 1) {
-        serialPortName = serialPortsNames.at(0);
-        qDebug() << "You select serial port %s " << serialPortName;
-        bool isOpendSuccess = serialPort.openPort(serialPortName);
-        qDebug() << serialPortName << " opened " << isOpendSuccess;
-        ui->tbDisplayInfo->append(serialPortName + " open " + (isOpendSuccess ? "success" : "fail"));
-    } else {
-        connect(ui->cbComList, SIGNAL(currentIndexChanged(int)), this, SLOT(cbComListChanged(int)));
+        serialPortsNames << info.portName();
     }
+
+    ui->cbComList->addItems(serialPortsNames);
+    //connect(ui->cbComList, SIGNAL(currentIndexChanged(int)), this, SLOT(cbComListChanged(int)));//使用原生QComboBox,则使用currentIndexChanged信号
+    connect(ui->cbComList, SIGNAL(activated(int)), this, SLOT(cbComListChanged(int)));//使用自定义CustomComboBox,则使用activated信号
 }
 
 void ElisMainWidget::setHLayoutCom(Ui::ElisMainWidget *ui) {

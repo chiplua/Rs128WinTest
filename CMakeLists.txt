@@ -42,7 +42,7 @@ add_executable(${PROJECT_NAME} example/main.cpp
         src/view/ElisMainWidget.ui
         src/view/ComboListContent.h
         src/elisserial/parsedata/PackagingAndUnpacking.cpp
-        src/elisserial/parsedata/PackagingAndUnpacking.h src/utils/StringUtils.cpp src/utils/StringUtils.h src/view/ElisSensorTestWidget.cpp src/view/ElisSensorTestWidget.h src/view/ElisSensorTestWidget.ui)
+        src/elisserial/parsedata/PackagingAndUnpacking.h src/utils/StringUtils.cpp src/utils/StringUtils.h src/view/ElisSensorTestWidget.cpp src/view/ElisSensorTestWidget.h src/view/ElisSensorTestWidget.ui src/view/CustomComboBox.cpp src/view/CustomComboBox.h)
 target_link_libraries(${PROJECT_NAME} ${REQUIRED_LIBS_QUALIFIED})
 
 TARGET_LINK_LIBRARIES(${PROJECT_NAME} ${Qt5Core_LIBRARIES}  ${Qt5Widgets_LIBRARIES}  ${Qt5SerialPort_LIBRARIES})
