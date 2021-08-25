@@ -54,13 +54,15 @@ public:
         void cbbtnGeneralConfigurationStateChanged(int state);
         void cbbtnAllowEntryCountStateChanged(int state);
         void cbbtnAllowExitCountStateChanged(int state);
-        void comPortChanged();
+        void receiveComVersion();
 
 private:
     Ui::ElisMainWidget *ui;
     QString serialPortName;
     QStringList serialPortsNames;
     SerialPort serialPort;
+    QByteArray pasteData;
+    QByteArray readData;
     void initComboBox(Ui::ElisMainWidget *ui);
     void setHLayoutCom(Ui::ElisMainWidget *ui);
     void setVLayoutPassengersRight(Ui::ElisMainWidget *ui);

@@ -31,6 +31,78 @@ void vector2QByteArray(const std::vector<unsigned char> vect, unsigned char arra
     *qba = QByteArray::fromRawData(reinterpret_cast<char*>(array), vect.size());
 }
 
+void disconnectAll() {
+
+}
+
+void ElisMainWidget::receiveComVersion() {
+    QByteArray bufferData = serialPort.readAll();
+    qDebug() << "receiveComVersion bufferData = " + bufferData;
+
+    //qDebug()<<temp;
+    if ((!bufferData.contains(0x02)) && (pasteData.isNull())) {
+        return;
+    }
+
+    //第一种：有头无尾，先清空原有内容，再附加
+    if ((bufferData.contains(0x02)) && (!bufferData.contains(0x03))) {
+        pasteData.clear();
+        pasteData.append(bufferData);
+    }
+
+    //第二种：无头无尾且变量已有内容，数据中段部分，继续附加即可
+    if ((!bufferData.contains(0x02)) && (!bufferData.contains(0x03)) && (!pasteData.isNull())) {
+        pasteData.append(bufferData);
+    }
+
+    //第三种：无头有尾且变量已有内容，，附加后输出数据，并清空变量
+    if ((!bufferData.contains(0x02)) && (bufferData.contains(0x03)) && (!pasteData.isNull())) {
+        pasteData.append(bufferData);
+
+        int shouldLength = 4 + pasteData.at(1);
+        int realLength = pasteData.length();
+        if (shouldLength != realLength) {//未读取完整，追加数据
+        } else {//已完整读取, 附加后输出数据，并清空变量
+            readData = pasteData;
+            pasteData.clear();
+        }
+    }
+
+    //第四2种：有头有尾, 需判断是否为一段完整的内容
+    if ((bufferData.contains(0x02)) && (bufferData.contains(0x03))) {
+        pasteData.append(bufferData);
+
+        int shouldLength = 4 + pasteData.at(1);
+        int realLength = pasteData.length();
+        if (shouldLength != realLength) { //有头有尾，但不是完整数据，继续添加
+        } else {//有头有尾（一段完整的内容），先清空原有内容，再附加，然后输出，最后清空变量
+            pasteData.clear();
+            readData = pasteData;
+            pasteData.clear();
+        }
+    }
+
+    //qDebug() << "" << readData.replace("{", "").replace("}", "");
+    if (!readData.isEmpty()) {
+        QByteArray hexData = readData.toHex();
+        qDebug() << "hexData.at(0) = " << readData.at(0);
+        qDebug() << "hexData.at(last) = " << readData.at(readData.length() - 1);
+        qDebug() << "hexData.size() = " << readData.size();
+        QString str;
+        str.prepend(hexData);// QByteArray转QString方法2
+        QString disStr;
+        for (int i = 0; i < str.length(); i+=2) {
+            QString st = str.mid(i,2);
+            disStr += st;
+            disStr += " ";
+        }
+        ui->tbDisplayInfo->append(disStr);
+
+        readData.clear();
+    }
+
+}
+
 void ElisMainWidget::serialWriteData(QByteArray qba) {
     if (serialPort.isOpen()) {
         serialPort.write(qba);
@@ -185,6 +257,7 @@ void ElisMainWidget::btnVersionRequestPressed() {
     unsigned char array[versionCommandVect.size()];
     vector2QByteArray(versionCommandVect, array, &qba);
     serialWriteData(qba);
+    connect(&serialPort, SIGNAL(readyRead()), this, SLOT(receiveComVersion()));
 }
 
 void ElisMainWidget::btnSetEmergencyPressed() {
@@ -296,10 +369,6 @@ void ElisMainWidget::cbbtnAllowEntryCountStateChanged(int state) {
 
 void ElisMainWidget::cbbtnAllowExitCountStateChanged(int state) {
     ui->tbDisplayInfo->append("Check box allow exit count state changed: state = " + QString::fromStdString(std::to_string(state)));
-}
-
-void ElisMainWidget::comPortChanged() {
-    ui->tbDisplayInfo->append("combo box clicked");
 }
 
 void ElisMainWidget::initComboBox(Ui::ElisMainWidget *ui) {
