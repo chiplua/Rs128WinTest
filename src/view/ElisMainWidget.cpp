@@ -148,6 +148,13 @@ void ElisMainWidget::btnTopIndicatorLigthPressed() {
 
 void ElisMainWidget::btnPassageAuthorizationPressed() {
     ui->tbDisplayInfo->append("Passage authorization pressed");
+    //02 10 03 04 04 01 10 02 03
+    std::vector<unsigned char> passageAuthorizationVect = PackagingAndUnpacking::requestPassageAuthorization(0x04, 0x01);
+
+    QByteArray qba;
+    unsigned char array[passageAuthorizationVect.size()];
+    vector2QByteArray(passageAuthorizationVect, array, &qba);
+    serialWriteData(qba);
 }
 
 void ElisMainWidget::btnStartStressTestPressed() {

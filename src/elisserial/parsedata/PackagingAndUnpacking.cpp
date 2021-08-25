@@ -157,8 +157,14 @@ namespace ElisSerial {
         return packageCommand(setAisleModeCommand, 3);
     }
 
+    std::vector<unsigned char> PackagingAndUnpacking::requestPassageAuthorization(unsigned char conversationId, unsigned char direction) {
+        unsigned char passageAuthorizationCommand[] = {0x04, conversationId, direction};
+
+        return packageCommand(passageAuthorizationCommand, 3);
+    }
+
     std::vector<unsigned char> PackagingAndUnpacking::requestTestModule(unsigned char conversationId, unsigned char direction) {//protocal 3.4.允许通行
-        unsigned char testModuleCommand[3] = {0x04, conversationId, direction};
+        unsigned char testModuleCommand[3] = {0x05, conversationId, direction};
 
         return packageCommand(testModuleCommand, 3);
     }

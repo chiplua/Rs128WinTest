@@ -41,6 +41,7 @@ namespace ElisSerial {
         static std::vector<unsigned char> requestSetGedMode(unsigned char conversationId, unsigned char mode);
         static std::vector<unsigned char> requestTestSensor(unsigned char conversationId, unsigned char action, unsigned char testData);
         static std::vector<unsigned char> requestStopCurrentTest(unsigned char conversationId, unsigned char testData);
+        static std::vector<unsigned char> requestPassageAuthorization(unsigned char conversationId, unsigned char direction);
     };
 }
 #endif //ELISRS128WINTEST_PACKAGINGANDUNPACKING_H
