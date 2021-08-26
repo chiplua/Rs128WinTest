@@ -18,6 +18,8 @@ using namespace ElisView;
 using namespace ElisSerial;
 using namespace ElisTool;
 
+
+
 QPalette getButtonCommonPalette() {
     QPalette pal;
     pal.setColor(QPalette::ButtonText, QColor(255,255,255));
@@ -37,82 +39,119 @@ void disconnectAll() {
 
 void ElisMainWidget::receiveComVersion() {
     QByteArray bufferData = serialPort.readAll();
-    qDebug() << "receiveComVersion bufferData = " + bufferData;
+    //QByteArray bufferData = serialPort.read(1);
+    qDebug() << "receiveComVersion bufferData = " + bufferData.toHex();
 
     //qDebug()<<temp;
-    if ((!bufferData.contains(0x02)) && (pasteData.isNull())) {
-        return;
+    if ((bufferData.at(0) == 0x02) && bufferData.size() == 1) {
+        //return;
+        pasteData.append(bufferData);
     }
 
+
     //第一种：有头无尾，先清空原有内容，再附加
-    if ((bufferData.contains(0x02)) && (!bufferData.contains(0x03))) {
-        pasteData.clear();
+    if ((bufferData.at(0) == 0x02) && (bufferData.at(bufferData.size() - 1) != 0x03) && bufferData.size() != 1) {
+        //pasteData.clear();
         pasteData.append(bufferData);
+        qDebug() << "after receiveComVersion1 pastData = " + pasteData.toHex();
     }
 
     //第二种：无头无尾且变量已有内容，数据中段部分，继续附加即可
-    if ((!bufferData.contains(0x02)) && (!bufferData.contains(0x03)) && (!pasteData.isNull())) {
+    if ((bufferData.at(0) != 0x02) && (bufferData.at(bufferData.size() - 1) != 0x03) && (!pasteData.isNull())) {
         pasteData.append(bufferData);
+        qDebug() << "after receiveComVersion2 pastData = " + pasteData.toHex();
     }
 
-    //第三种：无头有尾且变量已有内容，，附加后输出数据，并清空变量
-    if ((!bufferData.contains(0x02)) && (bufferData.contains(0x03)) && (!pasteData.isNull())) {
+    //第3种：无头有尾
+    if ((bufferData.at(0) != 0x02) && (bufferData.at(bufferData.size() - 1) == 0x03) && (!pasteData.isNull())) {
         pasteData.append(bufferData);
-        std::vector<unsigned char> resultVect = PackagingAndUnpacking::convertReceivedArray2OnlyLenDataBcc(reinterpret_cast<unsigned char*>(pasteData.data()), pasteData.size());
-        if (resultVect.size() > 0) {
-            bool isBccRight = StringUtils::isBccRight(resultVect, resultVect.at(resultVect.size() - 1));
-            qDebug() << "resultVect1 = " << resultVect;
-            qDebug() << "resultVect1 bcc right = " << isBccRight;
-        }
+        qDebug() << "after receiveComVersion33 pastData = " + pasteData.toHex();
+    }
 
-        int shouldLength = 4 + pasteData.at(1);
-        int realLength = pasteData.size();
-        if (shouldLength != realLength) {//未读取完整，追加数据
-        } else {//已完整读取, 附加后输出数据，并清空变量
-            readData = pasteData;
-            pasteData.clear();
-        }
+    if ((bufferData.at(0) == 0x02 && bufferData.at(bufferData.size() - 1) == 0x03)) {
+        pasteData.append(bufferData);
+        qDebug() << "after receiveComVersion3 pastData = " + pasteData.toHex();
     }
 
     //第四2种：有头有尾, 需判断是否为一段完整的内容
-    if ((bufferData.contains(0x02)) && (bufferData.contains(0x03))) {
-        pasteData.append(bufferData);
-        std::vector<unsigned char> resultVect = PackagingAndUnpacking::convertReceivedArray2OnlyLenDataBcc(reinterpret_cast<unsigned char*>(pasteData.data()), pasteData.size());
-        if (resultVect.size() > 0) {
-            bool isBccRight = StringUtils::isBccRight(resultVect, resultVect.at(resultVect.size() - 1));
-            qDebug() << "resultVect2 = " << resultVect;
-            qDebug() << "resultVect2 bcc right = " << isBccRight;
+    if (bufferData.contains(0x02) && bufferData.contains(0x03)) {
+        qDebug() << "after receiveComVersion4 pastData = " + pasteData.toHex();
+
+        QByteArray cutArray;
+        int needRemoveSize = 0;
+        for (int i = 0; i < pasteData.size(); i++) {
+            if (pasteData.at(i) != 0x03) {
+                cutArray.append(pasteData.at(i));
+            } else {
+                cutArray.append(pasteData.at(i));
+                qDebug() << "cutArray2 = " << cutArray.toHex();
+                if (cutArray.at(0) != 0x02) {
+                    readData.clear();
+                    pasteData.clear();
+                    ui->tbDisplayInfo->append("received error data");
+                    qDebug() << "received error data";
+
+                    return;
+                } else {
+                    if (cutArray.at(1) == 0x02) {
+                        cutArray.remove(1, 1);
+                    }
+                }
+
+                //std::vector<unsigned char> resultVect = PackagingAndUnpacking::convertReceivedArray2OnlyLenDataBcc(reinterpret_cast<unsigned char*>(pasteData.data()), pasteData.size());
+                std::vector<unsigned char> resultVect = PackagingAndUnpacking::convertReceivedArray2OnlyLenDataBcc(reinterpret_cast<unsigned char*>(cutArray.data()), cutArray.size());
+                if (resultVect.size() > 0) {
+                    bool isBccRight = StringUtils::isBccRight(resultVect, resultVect.at(resultVect.size() - 1));
+                    qDebug() << "resultVect2 = " << resultVect;
+                    qDebug() << "resultVect2 bcc right = " << isBccRight;
+
+                    if (isBccRight) {
+                        int shouldLength = resultVect.at(0) + 4;
+                        int realLength = resultVect.size() + 2;
+                        if (shouldLength != realLength) { //有头有尾，但不是完整数据，继续添加
+                        } else {//有头有尾（一段完整的内容），先清空原有内容，再附加，然后输出，最后清空变量
+                            //pasteData.clear();
+                            readData = cutArray;
+                        }
+
+                        if (!readData.isEmpty()) {
+                            QByteArray hexData = readData.toHex();
+                            qDebug() << "hexData2.at(0) = " << readData.at(0);
+                            qDebug() << "hexData2.at(last) = " << readData.at(readData.length() - 1);
+                            qDebug() << "hexData2.size() = " << readData.size();
+                            QString str;
+                            str.prepend(hexData);// QByteArray转QString方法2
+                            QString disStr;
+                            for (int i = 0; i < str.length(); i+=2) {
+                                QString st = str.mid(i,2);
+                                disStr += st;
+                                disStr += " ";
+                            }
+                            ui->tbDisplayInfo->append(disStr);
+
+                            readData.clear();
+                            needRemoveSize = needRemoveSize + cutArray.size();
+                            cutArray.clear();
+                        }
+                    }
+                }
+            }
+            if (cutArray.size() > 0) {
+                if (cutArray.at(0) != 0x02) {
+                    cutArray.clear();
+                    continue;
+                }
+            }
+
         }
 
-        int shouldLength = 4 + pasteData.at(1);
-        int realLength = resultVect.size();
-        if (shouldLength != realLength) { //有头有尾，但不是完整数据，继续添加
-        } else {//有头有尾（一段完整的内容），先清空原有内容，再附加，然后输出，最后清空变量
-            pasteData.clear();
-            readData = pasteData;
-            pasteData.clear();
-        }
+        qDebug() << "the follow data will be delete: " << pasteData.mid(0, needRemoveSize).toHex();
+        pasteData.remove(0, needRemoveSize);
+        qDebug() << "pasterData left: " << pasteData.toHex();
     }
 
-    //qDebug() << "" << readData.replace("{", "").replace("}", "");
-    if (!readData.isEmpty()) {
-        QByteArray hexData = readData.toHex();
-        qDebug() << "hexData.at(0) = " << readData.at(0);
-        qDebug() << "hexData.at(last) = " << readData.at(readData.length() - 1);
-        qDebug() << "hexData.size() = " << readData.size();
-        QString str;
-        str.prepend(hexData);// QByteArray转QString方法2
-        QString disStr;
-        for (int i = 0; i < str.length(); i+=2) {
-            QString st = str.mid(i,2);
-            disStr += st;
-            disStr += " ";
-        }
-        ui->tbDisplayInfo->append(disStr);
-
-        readData.clear();
-    }
-
+    qDebug() << "emit result ready";
+    emit resultReady(0);
 }
 
 void ElisMainWidget::serialWriteData(QByteArray qba) {
@@ -152,8 +191,7 @@ void ElisMainWidget::btnCurrentStatusRequestPressed() {
     vector2QByteArray(statusVect, array, &qba);
 
     //qDebug() << qa << qa.toHex() << qa.size();
-    //serialWriteData(qba);
-    std::vector<unsigned char> resultVect = PackagingAndUnpacking::convertReceivedArray2OnlyLenDataBcc(reinterpret_cast<unsigned char*>(pasteData.data()), 8);
+    serialWriteData(qba);
 }
 
 void ElisMainWidget::btnOkPressed() {
@@ -270,7 +308,9 @@ void ElisMainWidget::btnVersionRequestPressed() {
     unsigned char array[versionCommandVect.size()];
     vector2QByteArray(versionCommandVect, array, &qba);
     serialWriteData(qba);
-    connect(&serialPort, SIGNAL(readyRead()), this, SLOT(receiveComVersion()));
+    connect(&serialPort, SIGNAL(readyRead()), this, SLOT(receiveComVersion()), Qt::QueuedConnection);
+    //connect(&serialPort, SIGNAL(readyRead()), this, SLOT(receiveComVersion()));
+
 }
 
 void ElisMainWidget::btnSetEmergencyPressed() {

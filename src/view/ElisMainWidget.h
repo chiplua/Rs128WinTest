@@ -55,6 +55,8 @@ public:
         void cbbtnAllowEntryCountStateChanged(int state);
         void cbbtnAllowExitCountStateChanged(int state);
         void receiveComVersion();
+signals:
+    void resultReady(const int result);
 
 private:
     Ui::ElisMainWidget *ui;
