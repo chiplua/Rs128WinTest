@@ -33,7 +33,8 @@ void vector2QByteArray(const std::vector<unsigned char> vect, unsigned char arra
     *qba = QByteArray::fromRawData(reinterpret_cast<char*>(array), vect.size());
 }
 
-void disconnectAll() {
+void ElisMainWidget::disconnectAll() {
+    disconnect(&serialPort, SIGNAL(readyRead()), this, SLOT(receiveComVersion()));
 
 }
 
@@ -179,6 +180,7 @@ void ElisMainWidget::btnOpenComClicked() {
 
 void ElisMainWidget::btnCloseComClicked() {
     ui->tbDisplayInfo->append("Close the com port pressed");
+    disconnectAll();
     serialPort.close();
     qDebug() << serialPortName << " closed";
 }
@@ -308,6 +310,7 @@ void ElisMainWidget::btnVersionRequestPressed() {
     unsigned char array[versionCommandVect.size()];
     vector2QByteArray(versionCommandVect, array, &qba);
     serialWriteData(qba);
+    disconnectAll();
     connect(&serialPort, SIGNAL(readyRead()), this, SLOT(receiveComVersion()), Qt::QueuedConnection);
     //connect(&serialPort, SIGNAL(readyRead()), this, SLOT(receiveComVersion()));
 
