@@ -75,7 +75,7 @@ void ElisMainWidget::receiveComVersion() {
     }
 
     //第四2种：有头有尾, 需判断是否为一段完整的内容
-    if (bufferData.contains(0x02) && bufferData.contains(0x03)) {
+    if ((bufferData.contains(0x02) && bufferData.contains(0x03)) || (pasteData.contains(0x02) && pasteData.contains(0x03))) {
         qDebug() << "after receiveComVersion4 pastData = " + pasteData.toHex();
 
         QByteArray cutArray;
@@ -311,6 +311,8 @@ void ElisMainWidget::btnVersionRequestPressed() {
     vector2QByteArray(versionCommandVect, array, &qba);
     serialWriteData(qba);
     disconnectAll();
+    readData.clear();
+    pasteData.clear();
     connect(&serialPort, SIGNAL(readyRead()), this, SLOT(receiveComVersion()), Qt::QueuedConnection);
     //connect(&serialPort, SIGNAL(readyRead()), this, SLOT(receiveComVersion()));
 
