@@ -215,4 +215,46 @@ namespace ElisSerial {
 
         return packageCommand(cancelCurrentTestCommand, 4);
     }
+
+    std::vector<unsigned char> PackagingAndUnpacking::response11GateThrough(unsigned char conversationId, unsigned char resultCode) {
+        unsigned char responseGateThroughCommand[3] = {0x91, conversationId, resultCode};
+
+        return packageCommand(responseGateThroughCommand, 3);
+    }
+
+    std::vector<unsigned char> PackagingAndUnpacking::response12CancelGateThrough(unsigned char conversationId, unsigned char resultCode) {
+        unsigned char responseCancelGateThroughCommand[3] = {0x92, conversationId, resultCode};
+
+        return packageCommand(responseCancelGateThroughCommand, 3);
+    }
+
+    std::vector<unsigned char> PackagingAndUnpacking::response13BurstIn(unsigned char conversationId, unsigned char resultCode) {
+        unsigned char responseBurstInCommand[3] = {0x093, conversationId, resultCode};
+
+        return packageCommand(responseBurstInCommand, 3);
+    }
+
+    std::vector<unsigned char> PackagingAndUnpacking::response14IllegalThrough(unsigned char conversationId, unsigned char resultCode) {
+        unsigned char responseIllegalThroughCommand[3] = {0x094, conversationId, resultCode};
+
+        return packageCommand(responseIllegalThroughCommand, 3);
+    }
+
+    std::vector<unsigned char> PackagingAndUnpacking::response15SensorTest(unsigned char conversationId, unsigned char resultCode) {
+        unsigned char responseSensorTestCommand[3] = {0x95, conversationId, resultCode};
+
+        return packageCommand(responseSensorTestCommand, 3);
+    }
+
+    std::vector<unsigned char> PackagingAndUnpacking::response16BarrierMechanismFault(unsigned char conversationId, unsigned char resultCode) {
+        unsigned char responseBarrierMechanismFaultCommand[3] = {0x96, conversationId, resultCode};
+
+        return packageCommand(responseBarrierMechanismFaultCommand, 3);
+    }
+
+    std::vector<unsigned char> PackagingAndUnpacking::response17EmergencyMode(unsigned char conversationId, unsigned char resultCode) {
+        unsigned char responseEmergencyModeCommand[3] = {0x97, conversationId, resultCode};
+
+        return packageCommand(responseEmergencyModeCommand, 3);
+    }
 }

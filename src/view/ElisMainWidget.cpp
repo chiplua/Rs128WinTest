@@ -40,7 +40,6 @@ void ElisMainWidget::disconnectAll() {
 
 void ElisMainWidget::receiveComVersion() {
     QByteArray bufferData = serialPort.readAll();
-    //QByteArray bufferData = serialPort.read(1);
     qDebug() << "receiveComVersion bufferData = " + bufferData.toHex();
 
     //qDebug()<<temp;

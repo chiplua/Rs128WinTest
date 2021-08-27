@@ -53,6 +53,13 @@ namespace ElisSerial {
         static std::vector<unsigned char> requestTestSensor(unsigned char conversationId, unsigned char action, unsigned char testData);
         static std::vector<unsigned char> requestStopCurrentTest(unsigned char conversationId, unsigned char testData);
         static std::vector<unsigned char> requestPassageAuthorization(unsigned char conversationId, unsigned char direction);
+        static std::vector<unsigned char> response11GateThrough(unsigned char conversationId, unsigned char resultCode);
+        static std::vector<unsigned char> response12CancelGateThrough(unsigned char conversationId, unsigned char resultCode);
+        static std::vector<unsigned char> response13BurstIn(unsigned char conversationId, unsigned char resultCode);
+        static std::vector<unsigned char> response14IllegalThrough(unsigned char conversationId, unsigned char resultCode);
+        static std::vector<unsigned char> response15SensorTest(unsigned char conversationId, unsigned char resultCode);
+        static std::vector<unsigned char> response16BarrierMechanismFault(unsigned char conversationId, unsigned char resultCode);
+        static std::vector<unsigned char> response17EmergencyMode(unsigned char conversationId, unsigned char resultCode);
     };
 }
 #endif //ELISRS128WINTEST_PACKAGINGANDUNPACKING_H
