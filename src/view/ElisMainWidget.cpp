@@ -9,10 +9,12 @@
 #include "ui_ElisMainWidget.h"
 #include <QDebug>
 #include <QMessageBox>
+#include <iostream>
 #include "ComboListContent.h"
 #include "../elisserial/parsedata/PackagingAndUnpacking.h"
 #include "../utils/StringUtils.h"
 #include "ElisSensorTestWidget.h"
+#include "../elisserial/EnumResultCode.h"
 
 using namespace ElisView;
 using namespace ElisSerial;
@@ -314,7 +316,6 @@ void ElisMainWidget::btnVersionRequestPressed() {
     pasteData.clear();
     connect(&serialPort, SIGNAL(readyRead()), this, SLOT(receiveComVersion()), Qt::QueuedConnection);
     //connect(&serialPort, SIGNAL(readyRead()), this, SLOT(receiveComVersion()));
-
 }
 
 void ElisMainWidget::btnSetEmergencyPressed() {
